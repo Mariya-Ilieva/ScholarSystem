@@ -1,9 +1,9 @@
-from django.contrib.auth import models as auth_models
+from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from django.contrib.auth.models import User
 from django.db import models
 
 
-class MasterUser(auth_models.AbstractUser, auth_models.PermissionsMixin):
+class MasterUser(AbstractUser, PermissionsMixin):
     USERNAME_MAX_LENGTH = 15
     FIRST_NAME_MAX_LENGTH = 15
     LAST_NAME_MAX_LENGTH = 15
