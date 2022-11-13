@@ -1,6 +1,10 @@
-from django.contrib.auth.models import AbstractUser, PermissionsMixin
+from django.contrib.auth.models import AbstractUser, PermissionsMixin, UserManager
 from django.contrib.auth.models import User
 from django.db import models
+
+
+class Director(UserManager):
+    pass
 
 
 class MasterUser(AbstractUser, PermissionsMixin):
