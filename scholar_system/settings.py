@@ -99,5 +99,7 @@ STATICFILES_DIRS = [
     BASE_DIR/'static'
 ]
 
+AUTH_USER_MODEL = 'accounts.MasterUser'
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
