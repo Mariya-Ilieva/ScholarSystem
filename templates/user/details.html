@@ -1,0 +1,18 @@
+{% block content %}
+    <div class="form_div">
+        <p>First Name: {{ object.first_name }}</p>
+        <p>Last Name: {{ object.last_name }}</p>
+        <p>Email: {{ object.user.email }}</p>
+        <div>
+            <a href="{% url 'user edit' object.user.id %}">
+                <button class="button">Edit</button>
+            </a>
+            <a class="anchor" href="{% url 'user delete' object.user.id %}">
+                <button class="button">Delete</button>
+            </a>
+            <a class="anchor" href="{% url 'change password' object.user.id %}">
+                <button class="button">Change Password</button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

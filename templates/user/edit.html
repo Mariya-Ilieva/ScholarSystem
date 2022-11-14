@@ -1,0 +1,13 @@
+{% block content %}
+    <div class="form_div">
+        <form method="POST" action="{% url 'user edit' %}">
+            {% csrf_token %}
+            <label>First Name:</label>
+            {{ form.first_name }}
+            <label>Last Name:</label>
+            {{ form.last_name }}
+            {{ form.errors }}
+            <button class="button">Save</button>
+        </form>
+    </div>
+{% endblock %}

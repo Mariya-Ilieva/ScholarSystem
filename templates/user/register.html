@@ -1,0 +1,19 @@
+{% block content %}
+    <div class="form_div">
+        <form method="POST" action="{% url 'user register' %}">
+            {% csrf_token %}
+            <label>Email:</label>
+            {{ form.email }}
+            <label>First Name:</label>
+            {{ form.first_name }}
+            <label>Last Name</label>
+            {{ form.last_name }}
+            <label>Password:</label>
+            {{ form.password1 }}
+            <label>Confirm Password:</label>
+            {{ form.password2 }}
+            {{ form.errors }}
+            <button class="button">Save</button>
+        </form>
+    </div>
+{% endblock %}
