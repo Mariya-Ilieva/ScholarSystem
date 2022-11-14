@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Scholar System</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block navbar-menu %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'show courses' %}">COURSES</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">CONTACT</a></li>
+{% endblock %}
+
+{% block content %}
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="text-center">
+                    <h1 class="text-white-50 mx-auto mt-2 mb-5">Not a Club
+                        <p>A Community</p>
+                    </h1>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">
+                        Join us today and let's make studying easier!
+                    </h2>
+                    <a href="{% url 'user register' %}" class="btn btn-primary">Join today</a>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}

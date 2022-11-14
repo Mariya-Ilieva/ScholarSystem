@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>My Music App</title>
+    <title>SCHOLAR SYSTEM</title>
     <link rel="stylesheet" href="{% static "css/styling.css" %}"/>
 </head>
 <body>
@@ -14,8 +14,12 @@
             <img src="{% static "images/avatar_scholar_256.png" %}" alt="scholar">
             <a href="{% url 'home page' %}">HOME</a><ul></ul>
             <ul>
-                {% if user_profile %}
-                <li><a href="{% url 'user details' %}">Profile</a></li>
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'user details' request.user.pk %}">Profile</a></li>
+                    <li><a href="{% url 'user logout' %}">Sign Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'user register' %}">Sign Up</a></li>
+                    <li><a href="{% url 'user login' %}">Sign In</a></li>
                 {% endif %}
             </ul>
         </nav>
