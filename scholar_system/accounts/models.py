@@ -22,3 +22,13 @@ class MasterUser(AbstractUser, PermissionsMixin):
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['age', 'first_name', 'last_name']
+
+
+class Profile(models.Model):
+    FIRST_NAME_MAX_LENGTH = 15
+    LAST_NAME_MAX_LENGTH = 15
+
+    first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH, )
+    last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH, )
+    age = models.PositiveIntegerField()
+    user = models.OneToOneField(MasterUser, on_delete=models.CASCADE)

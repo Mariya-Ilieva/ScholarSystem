@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from scholar_system.accounts.models import MasterUser
+from scholar_system.accounts.models import MasterUser, Profile
 
 
 @admin.register(MasterUser)
@@ -18,3 +18,8 @@ class RegisterMasterUser(UserAdmin):
         (None, {'fields': ('username', 'email', 'password1', 'password2'), }),
     )
     readonly_fields = ('date_joined',)
+
+
+@admin.register(Profile)
+class RegisterProfile(admin.ModelAdmin):
+    pass
