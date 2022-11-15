@@ -21,7 +21,9 @@ class MasterUser(AbstractUser, PermissionsMixin):
     last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH,)
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['age', 'first_name', 'last_name']
+    REQUIRED_FIELDS = ['email', 'age', 'first_name', 'last_name']
+
+    objects = Director()
 
 
 class Profile(models.Model):
@@ -33,4 +35,4 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH, )
     last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH, )
     age = models.PositiveIntegerField()
-    user = models.OneToOneField(MasterUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(MasterUser, primary_key=True, on_delete=models.CASCADE)

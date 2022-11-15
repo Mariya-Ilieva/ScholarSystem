@@ -3,7 +3,7 @@
 {% block content %}
         <div class="div">
         <p>Are you sure you want to permanently delete your profile?</p>
-            <form method="POST" action="{% url 'user delete' %}">
+            <form method="POST" action="{% url 'user delete' object.pk %}">
                 {% csrf_token %}
                 {{ form }}
                 <button class="button" type="submit">Yes, Delete!</button>

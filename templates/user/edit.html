@@ -2,8 +2,12 @@
 
 {% block content %}
     <div class="div">
-        <form method="POST" action="{% url 'user edit' %}">
+        <form method="POST" action="{% url 'user edit' object.pk %}">
             {% csrf_token %}
+            <label>Username:</label>
+            {{ form.username }}
+            <label>Age:</label>
+            {{ form.age }}
             <label>First Name:</label>
             {{ form.first_name }}
             <label>Last Name:</label>
