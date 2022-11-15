@@ -1,5 +1,7 @@
+import os
 from pathlib import Path
 import environ
+from django.urls import reverse_lazy
 
 # Initialise environment variables
 env = environ.Env()
@@ -24,7 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'scholar_system.accounts'
+
+    'scholar_system.accounts',
+    'scholar_system.main',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +104,8 @@ STATICFILES_DIRS = [
 ]
 
 AUTH_USER_MODEL = 'accounts.MasterUser'
+
+LOGIN_REDIRECT_URL = reverse_lazy('home page')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

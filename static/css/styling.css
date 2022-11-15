@@ -1,12 +1,6 @@
 body {
     background-image: url('/static/images/scholar2.png');
-    background-size: cover;
-}
-
-.container-inline {
-  margin: 1rem;
-  padding: 2rem 2rem;
-
+    background-size: inherit;
 }
 
 nav,
@@ -64,22 +58,8 @@ footer {
 
 nav a:hover {
     cursor: pointer;
-    color: #45a29e;
+    color: #71A1F8;
     font-weight: bolder;
-}
-
-#welcomePage {
-    float: left;
-    width: 50%;
-    color: #45a29e;
-    font-size: 24px;
-    padding: 30px;
-    margin: 10px;
-
-}
-
-#welcomePage img {
-    width: 80%
 }
 
 nav > img {

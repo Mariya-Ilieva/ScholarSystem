@@ -20,7 +20,7 @@ class RegisterUserView(generic.CreateView):
     model = MasterUser
     form_class = RegisterUserForm
     template_name = 'user/register.html'
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('home page')
 
 
 class LoginUserView(views.LoginView):
@@ -82,7 +82,7 @@ class ChangePasswordView(CustomPermissionMixin, generic.UpdateView):
     form_class = ChangePasswordForm
     fields = '__all__'
     template_name = 'user/change_password.html'
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('home page')
 
     def get_form_class(self):
         return self.form_class

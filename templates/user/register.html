@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="form_div">
+    <div class="div">
         <form method="POST" action="{% url 'user register' %}">
             {% csrf_token %}
+            <label>Username:</label>
+            {{ form.username }}
             <label>Email:</label>
             {{ form.email }}
+            <label>Age:</label>
+            {{ form.age }}
             <label>First Name:</label>
             {{ form.first_name }}
             <label>Last Name</label>

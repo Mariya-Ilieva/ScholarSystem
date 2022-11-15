@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <div class="form_div">
+        <div class="div">
         <p>Are you sure you want to permanently delete your profile?</p>
             <form method="POST" action="{% url 'user delete' %}">
                 {% csrf_token %}

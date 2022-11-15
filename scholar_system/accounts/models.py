@@ -25,9 +25,11 @@ class MasterUser(AbstractUser, PermissionsMixin):
 
 
 class Profile(models.Model):
+    USERNAME_MAX_LENGTH = 15
     FIRST_NAME_MAX_LENGTH = 15
     LAST_NAME_MAX_LENGTH = 15
 
+    username = models.CharField(max_length=USERNAME_MAX_LENGTH, unique=True, null=False, default=False)
     first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH, )
     last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH, )
     age = models.PositiveIntegerField()

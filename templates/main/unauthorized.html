@@ -1,0 +1,17 @@
+{% load static %}
+
+{% block page_content %}
+    <div class="div">
+        <img src="{% static 'images/401_other_front.jpg' %}" alt="Not authorised">
+    </div>
+
+    <div class="div">
+        <h1>
+            Sorry,<br> it seems you aren't authorized to perform this action.
+        </h1>
+
+        <a href="{% url 'home page' %}">
+            <button>Return to Scholar System</button>
+        </a>
+    </div>
+{% endblock %}
