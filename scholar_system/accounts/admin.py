@@ -6,7 +6,7 @@ from scholar_system.accounts.models import MasterUser, Profile
 @admin.register(MasterUser)
 class RegisterMasterUser(UserAdmin):
     model = MasterUser
-    list_display = ('username', 'email', 'phone_no', 'is_staff')
+    list_display = ('username', 'email', 'is_staff')
     list_filter = ('is_staff',)
     ordering = ('username',)
     fieldsets = (
@@ -22,4 +22,4 @@ class RegisterMasterUser(UserAdmin):
 
 @admin.register(Profile)
 class RegisterProfile(admin.ModelAdmin):
-    pass
+    list_display = ('username', 'age', 'first_name', 'last_name')

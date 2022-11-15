@@ -15,7 +15,6 @@ class MasterUser(AbstractUser, PermissionsMixin):
     username = models.CharField(max_length=USERNAME_MAX_LENGTH, unique=True)
     email = models.EmailField(unique=True)
     date_joined = models.DateField(auto_now_add=True)
-    phone_no = models.CharField(max_length=10)
     age = models.PositiveIntegerField()
     first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH,)
     last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH,)
