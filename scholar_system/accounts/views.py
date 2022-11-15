@@ -82,7 +82,7 @@ class ChangePasswordView(CustomPermissionMixin, generic.UpdateView):
     form_class = ChangePasswordForm
     fields = '__all__'
     template_name = 'user/change_password.html'
-    success_url = reverse_lazy('home page')
+    success_url = reverse_lazy('user login')
 
     def get_form_class(self):
         return self.form_class
