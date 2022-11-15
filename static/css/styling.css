@@ -1,6 +1,6 @@
 body {
     background-image: url('/static/images/scholar2.png');
-    background-size: cover;
+    background-size: 105%;
 }
 
 nav,
@@ -75,10 +75,14 @@ form {
     flex-direction: column;
 }
 
-form label {
+form label, p {
     font-size: 30px;
     text-align: center;
     margin: 5px;
+}
+
+p {
+    color: tomato;
 }
 
 form input,
@@ -86,12 +90,21 @@ textarea {
     padding: 7px;
     border: 7px solid #71A1F8;
     border-radius: 2px;
-    width: 50%;
+    width: 30%;
     display: block;
     margin: 0 auto;
 }
 
-form input[type="submit"] {
-    margin-top: 15px;
-    width: 25%;
+.button {
+    background-color: #71A1F8;
+    border: none;
+    color: white;
+    width: 30%;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 25px auto;
+    cursor: pointer;
 }
