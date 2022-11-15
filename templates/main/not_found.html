@@ -1,17 +1,17 @@
 {% load static %}
 
-{% block page_content %}
     <div class="div">
+        <link rel="stylesheet" href="{% static "css/mainstyle404.css" %}"/>
         <img src="{% static 'images/404-not-found-error-explained-2622936-Final-fde7be1b7e2e499c9f039d97183e7f52.jpg' %}" alt="404 not found">
     </div>
 
     <div class="div">
         <h1>
-            Sorry,<br> something broke.
+            Sorry, something broke.
         </h1>
-
+    </div>
+    <div>
         <a href="{% url 'home page' %}">
             <button>Return to Scholar System</button>
         </a>
     </div>
-{% endblock %}
