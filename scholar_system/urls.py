@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
@@ -6,3 +8,9 @@ urlpatterns = [
     path('user/', include('scholar_system.accounts.urls')),
     path('', include('scholar_system.main.urls')),
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler400 = 'scholar_system.main.views.bad_request'
+handler403 = 'scholar_system.main.views.permission_denied'
+handler404 = 'scholar_system.main.views.page_not_found'
+handler500 = 'scholar_system.main.views.server_error'

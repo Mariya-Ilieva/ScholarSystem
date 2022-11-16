@@ -9,13 +9,17 @@ def unauthorized(request):
     return render(request, 'main/unauthorized.html')
 
 
-def handler404(request, *args, **kwargs):
-    response = render(request, 'main/not_found.html')
-    response.status_code = 404
-    return response
+def bad_request(request, exception=None):
+    return render(request, 'main/bad_request.html')
 
 
-def handler500(request, *args, **kwargs):
-    response = render(request, 'main/server_error.html')
-    response.status_code = 500
-    return response
+def permission_denied(request, exception=None):
+    return render(request, 'main/permission_denied.html')
+
+
+def page_not_found(request, exception=None):
+    return render(request, 'main/not_found.html')
+
+
+def server_error(request, exception=None):
+    return render(request, 'main/server_error.html')

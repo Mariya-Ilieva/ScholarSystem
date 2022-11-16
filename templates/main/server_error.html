@@ -1,17 +1,10 @@
-{% load static %}
-
-    <div class="div">
-        <link rel="stylesheet" href="{% static "css/mainstyle500.css" %}"/>
-        <img src="{% static 'images/error-500-doofinder.jpg' %}" alt="Server error">
-    </div>
-
-    <div class="div">
-        <h1>
-            Sorry,<br> internet server error.
-        </h1>
-    </div>
-    <div>
-        <a href="{% url 'home page' %}">
-            <button>Return to Scholar System</button>
-        </a>
-    </div>
+<div class="div">
+    <h1>
+        Sorry,<br> internet server error.
+    </h1>
+</div>
+<div>
+    <a href="{% url 'home page' %}">
+        <button>Return to Scholar System</button>
+    </a>
+</div>
