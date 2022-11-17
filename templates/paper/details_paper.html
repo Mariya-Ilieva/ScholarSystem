@@ -22,10 +22,10 @@
                     <p>{{ comment.text }}</p>
                     {% if profile == comment.commented_by %}
                         <a href="{% url 'comment edit' comment.id %}">
-                            <button class="button-comment">Edit Comment</button>
+                            <button class="button">Edit Comment</button>
                         </a>
                         <a href="{% url 'comment delete' comment.id %}">
-                            <button class="button-comment">Delete Comment</button>
+                            <button class="button">Delete Comment</button>
                         </a>
                     {% endif %}
                 </div>
