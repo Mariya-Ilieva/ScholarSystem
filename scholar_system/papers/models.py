@@ -7,6 +7,9 @@ class Topic(models.Model):
 
     title = models.CharField(max_length=TOPIC_TITLE_MAX_LENGTH, unique=True, )
 
+    def __str__(self):
+        return self.title
+
 
 class Paper(models.Model):
     description = models.TextField()

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="div">
+        <h1>{{ object.topic }}</h1>
+        <p>{{ object.description }}</p>
+        {% if is_owner %}
+            <div>
+                <a href="{% url 'paper edit' object.id %}">
+                    <button class="button">Edit paper</button>
+                </a>
+                <a href="{% url 'paper delete' object.id %}">
+                    <button class="button">Delete paper</button>
+                </a>
+            </div>
+        {% endif %}
+        {% if comments %}
+            <h2>Comments:</h2>
+            {% for comment in comments %}
+                <div class="comment">
+                    <h3>{{ comment.commented_by }}</h3>
+                    <p>{{ comment.text }}</p>
+                    {% if profile == comment.commented_by %}
+                        <a href="{% url 'comment edit' comment.id %}">
+                            <button class="button-comment">Edit Comment</button>
+                        </a>
+                        <a href="{% url 'comment delete' comment.id %}">
+                            <button class="button-comment">Delete Comment</button>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <a href="{% url 'comment add' object.id %}">
+            <button class="button">Add Comment</button>
+        </a>
+    </div>
+{% endblock %}

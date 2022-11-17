@@ -38,7 +38,6 @@ class LogoutUserView(views.LogoutView):
 
 
 class DetailsUserView(CustomPermissionMixin, generic.DetailView):
-    TEMPLATE_NAME = 'Profile Details'
     model = Profile
     template_name = 'user/details.html'
 
@@ -47,37 +46,23 @@ class DetailsUserView(CustomPermissionMixin, generic.DetailView):
         user = self.object.user
         profile = Profile.objects.get(pk=user.id)
         context['profile'] = profile
-        context['template_name'] = self.TEMPLATE_NAME
         return context
 
 
 class EditUserView(CustomPermissionMixin, generic.UpdateView):
-    TEMPLATE_NAME = 'Edit Profile'
     model = Profile
     template_name = 'user/edit.html'
     success_url = reverse_lazy('home page')
     fields = ['username', 'age', 'first_name', 'last_name']
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['template_name'] = self.TEMPLATE_NAME
-        return context
-
 
 class DeleteUserView(CustomPermissionMixin, generic.DeleteView):
-    TEMPLATE_NAME = 'Delete Profile'
     model = MasterUser
     template_name = 'user/delete.html'
     success_url = reverse_lazy('home page')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['template_name'] = self.TEMPLATE_NAME
-        return context
-
 
 class ChangePasswordView(CustomPermissionMixin, generic.UpdateView):
-    TEMPLATE_NAME = 'Change Password'
     model = UserModel
     form_class = ChangePasswordForm
     fields = '__all__'
@@ -92,8 +77,3 @@ class ChangePasswordView(CustomPermissionMixin, generic.UpdateView):
         kwargs['user'] = self.request.user
         kwargs.pop('instance')
         return kwargs
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['template_name'] = self.TEMPLATE_NAME
-        return context

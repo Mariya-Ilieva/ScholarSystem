@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load ratings %}
+
+{% block content %}
+    <div>
+        <ul class="list">
+            {% for p in user_papers %}
+                <a class="review-card container" href="{% url 'paper details' p.id %}">
+                    <p>Topic: {{ p.topic }}</p>
+                    <p>Description: {{ p.description }}</p>
+                    {% ratings p %}
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

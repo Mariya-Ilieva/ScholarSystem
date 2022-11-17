@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views import generic
+from scholar_system.papers.models import Paper
 
 
 def home_page(request):
@@ -23,3 +25,14 @@ def page_not_found(request, exception=None):
 
 def server_error(request, exception=None):
     return render(request, 'main/server_error.html')
+
+
+class AllPapersView(generic.ListView):
+    model = Paper
+    template_name = 'all_papers.html'
+    paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = Paper.objects.all()
+        return context

@@ -35,3 +35,6 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH, )
     age = models.PositiveIntegerField()
     user = models.OneToOneField(MasterUser, primary_key=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.username

@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'star_ratings',
+
     'scholar_system.accounts',
     'scholar_system.main',
     'scholar_system.papers',
@@ -105,6 +107,12 @@ STATICFILES_DIRS = [BASE_DIR/'static']
 AUTH_USER_MODEL = 'accounts.MasterUser'
 
 LOGIN_REDIRECT_URL = reverse_lazy('home page')
+
+STAR_RATINGS_RERATE = False
+
+STAR_RATINGS_CLEARABLE = True
+
+STAR_RATINGS_RANGE = 8
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

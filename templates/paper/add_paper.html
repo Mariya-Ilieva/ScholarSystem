@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="div">
+        <form method="POST" action="{% url 'paper create' %}">
+            {% csrf_token %}
+            <label>Topic:</label>
+            {{ form.topic }}
+            <label>Description:</label>
+            {{ form.description }}
+            {{ form.errors }}
+            <button class="button">Create paper</button>
+        </form>
+    </div>
+{% endblock %}
