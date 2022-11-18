@@ -1,4 +1,5 @@
 {% load static %}
+{% load has_permission %}
 {% load ratings %}
 
 <!DOCTYPE html>
@@ -49,7 +50,11 @@
         </span>
         <ul class="list">
             {% for element in page_obj.object_list %}
+                {% if request.user.is_superuser or request.user|has_permission:'Staff' %}
                 <a class="review-card container" href="{% url 'paper details' element.id %}">
+                {% else %}
+                <a class="review-card container" href="{% url 'home page' %}">
+                {% endif %}
                     <p>Topic: {{ element.topic }}</p>
                     <p>Description: {{ element.description }}</p>
                     {% ratings element %}
