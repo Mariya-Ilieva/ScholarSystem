@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tag %}
 {% load ratings %}
 
 <!DOCTYPE html>
@@ -39,7 +40,7 @@
             {% for p in user_papers %}
                 <a class="review-card container" href="{% url 'paper details' p.id %}">
                     <p>Topic: {{ p.topic }}</p>
-                    <p>Description: {{ p.description }}</p>
+                    <p>Description: {{ p.description|show_less }}</p>
                     {% ratings p %}
                 </a>
             {% endfor %}

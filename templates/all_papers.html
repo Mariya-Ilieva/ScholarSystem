@@ -1,5 +1,5 @@
 {% load static %}
-{% load has_permission %}
+{% load custom_tag %}
 {% load ratings %}
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@
                 <a class="review-card container" href="{% url 'home page' %}">
                 {% endif %}
                     <p>Topic: {{ element.topic }}</p>
-                    <p>Description: {{ element.description }}</p>
+                    <p>Description: {{ element.description|show_less }}</p>
                     {% ratings element %}
                 </a>
             {% endfor %}
