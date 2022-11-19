@@ -35,7 +35,7 @@ class AllPapersView(generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['object_list'] = Paper.objects.all()
+        context['paper_list'] = Paper.objects.all()
         return context
 
 
@@ -55,7 +55,7 @@ def add_topic(request):
         form = TopicForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(home_page)
+            return redirect('all topics')
     context = {
         'form': form,
     }
