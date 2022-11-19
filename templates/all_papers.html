@@ -59,6 +59,7 @@
                 <a class="review-card container" href="{% url 'home page' %}">
                 {% endif %}
                     <p>Topic: {{ element.topic }}</p>
+                    <p>Written by: {{ element.created_by }}</p>
                     <p>Description: {{ element.description|show_less }}</p>
                     {% ratings element %}
                 </a>
