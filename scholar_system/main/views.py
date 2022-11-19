@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
-from scholar_system.papers.models import Paper
+from scholar_system.main.forms import TopicForm, DeleteTopicForm
+from scholar_system.papers.models import Paper, Topic
 
 
 def home_page(request):
@@ -36,3 +37,52 @@ class AllPapersView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['object_list'] = Paper.objects.all()
         return context
+
+
+class AllTopicsView(generic.ListView):
+    model = Topic
+    template_name = 'topic/all_topics.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['topic_list'] = Topic.objects.all()
+        return context
+
+
+def add_topic(request):
+    form = TopicForm()
+    if request.method == 'POST':
+        form = TopicForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(home_page)
+    context = {
+        'form': form,
+    }
+    return render(request, 'topic/add_topic.html', context)
+
+
+def edit_topic(request, pk):
+    topic = Topic.objects.get(pk=pk)
+    form = TopicForm(instance=topic)
+    if request.method == 'POST':
+        form = TopicForm(request.POST, instance=topic)
+        if form.is_valid():
+            form.save()
+            return redirect('all topics')
+    context = {
+        'form': form,
+    }
+    return render(request, 'topic/edit_topic.html', context)
+
+
+def delete_topic(request, pk):
+    topic = Topic.objects.get(pk=pk)
+    form = DeleteTopicForm(instance=topic)
+    if request.method == 'POST':
+        topic.delete()
+        return redirect('all topics')
+    context = {
+        'form': form,
+    }
+    return render(request, 'topic/delete_topic.html', context)

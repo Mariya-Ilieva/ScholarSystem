@@ -11,7 +11,7 @@ class RegisterMasterUser(UserAdmin):
     ordering = ('username',)
     fieldsets = (
         (None, {'fields': ('email', 'password', 'is_staff', 'is_superuser',
-                           'is_verified', 'is_active', 'date_joined', )}),
+                           'is_active', 'date_joined', )}),
         ('Permissions', {'fields': ('groups', 'user_permissions'), }),
     )
     add_fieldsets = (

@@ -17,12 +17,15 @@
         <nav>
             <img src="{% static "images/avatar_scholar_256.png" %}" alt="scholar">
             <a href="{% url 'home page' %}">HOME</a>
-            {% if not request.user.is_authenticated %}
-                <a href="{% url 'all papers' %}">PAPERS</a>
-            {% else %}
+            <a href="{% url 'all topics' %}">TOPICS</a>
+            <a href="{% url 'all papers' %}">PAPERS</a>
+            {% if user.is_authenticated %}
                 <a href="{% url 'papers user' %}">MY PAPERS</a>
             {% endif %}
             <ul>
+                {% if user.is_staff %}
+                    <a href="{% url 'topic add' %}">Add Topic</a>
+                {% endif %}
                 {% if request.user.is_authenticated %}
                     <li><a href="{% url 'paper create' %}">Add paper</a></li>
                     <li><a href="{% url 'user details' request.user.pk %}">Profile</a></li>
@@ -50,7 +53,7 @@
         </span>
         <ul class="list">
             {% for element in page_obj.object_list %}
-                {% if request.user.is_superuser or request.user|has_permission:'Staff' %}
+                {% if request.user.is_authenticated or request.user|has_permission:'Employees' %}
                 <a class="review-card container" href="{% url 'paper details' element.id %}">
                 {% else %}
                 <a class="review-card container" href="{% url 'home page' %}">

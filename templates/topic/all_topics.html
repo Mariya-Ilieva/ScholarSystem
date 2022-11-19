@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load custom_tag %}
+
+{% block content %}
+    <div>
+        <ul class="list">
+            {% for t in topic_list %}
+                <p>{{ t.title }}</p>
+                {% if user.is_staff %}
+                    <a href="{% url 'topic edit' t.id %}">Edit</a>
+                    <a href="{% url 'topic delete' t.id %}">Delete</a>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
