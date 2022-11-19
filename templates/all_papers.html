@@ -53,7 +53,7 @@
         </span>
         <ul class="list">
             {% for element in page_obj.object_list %}
-                {% if request.user.is_authenticated or request.user|has_permission:'Employees' %}
+                {% if request.user.is_authenticated or request.user.is_staff %}
                 <a class="review-card container" href="{% url 'paper details' element.id %}">
                 {% else %}
                 <a class="review-card container" href="{% url 'home page' %}">
