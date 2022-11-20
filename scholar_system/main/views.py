@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import generic
-from scholar_system.main.forms import TopicForm, DeleteTopicForm
+from scholar_system.main.forms import TopicForm
 from scholar_system.papers.models import Paper, Topic
 
 
@@ -74,15 +74,3 @@ def edit_topic(request, pk):
         'form': form,
     }
     return render(request, 'topic/edit_topic.html', context)
-
-
-def delete_topic(request, pk):
-    topic = Topic.objects.get(pk=pk)
-    form = DeleteTopicForm(instance=topic)
-    if request.method == 'POST':
-        topic.delete()
-        return redirect('all topics')
-    context = {
-        'form': form,
-    }
-    return render(request, 'topic/delete_topic.html', context)
