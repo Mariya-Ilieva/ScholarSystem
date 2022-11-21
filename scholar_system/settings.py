@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'scholar_system.accounts',
     'scholar_system.main',
     'scholar_system.papers',
+    'scholar_system.seminars',
 ]
 
 MIDDLEWARE = [
