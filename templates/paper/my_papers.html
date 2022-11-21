@@ -27,6 +27,7 @@
                     <a href="{% url 'topic add' %}">Add Topic</a>
                 {% endif %}
                 {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'seminar create' %}">Add seminar</a></li>
                     <li><a href="{% url 'paper create' %}">Add paper</a></li>
                     <li><a href="{% url 'user details' request.user.pk %}">Profile</a></li>
                     <li><a href="{% url 'user logout' %}">Sign Out</a></li>

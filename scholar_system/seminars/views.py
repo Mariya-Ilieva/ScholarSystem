@@ -1,5 +1,4 @@
-from django.shortcuts import redirect
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from scholar_system.seminars.forms import SeminarForm
@@ -13,7 +12,7 @@ class CreateSeminarView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy('home page')
 
 
-class DetailsSeminarView(LoginRequiredMixin, generic.UpdateView):
+class DetailsSeminarView(LoginRequiredMixin, generic.DetailView):
     model = Seminar
     form_class = SeminarForm
     template_name = 'seminar/details_seminar.html'
