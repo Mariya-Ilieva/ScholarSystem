@@ -49,6 +49,19 @@ class AllTopicsView(generic.ListView):
         return context
 
 
+def search_bar(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        paper = Paper.objects.filter(description__icontains=searched)
+        context = {
+            'searched': searched,
+            'paper': paper,
+        }
+        return render(request, 'search_bar.html', context)
+    else:
+        return render(request, 'search_bar.html')
+
+
 def add_topic(request):
     form = TopicForm()
     if request.method == 'POST':

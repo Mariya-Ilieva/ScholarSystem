@@ -69,14 +69,14 @@ nav > img {
     margin-right: 0.2em;
 }
 
-form {
+form:not(.search){
     background-color: #FFE793;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
-form label, p {
+form:not(.search) label, p {
     background-color: #FFE793;
     font-size: 35px;
     text-align: center;
@@ -87,7 +87,7 @@ p {
     color: tomato;
 }
 
-form input,
+form:not(.search) input,
 textarea {
     padding: 7px;
     border: 7px solid #71A1F8;

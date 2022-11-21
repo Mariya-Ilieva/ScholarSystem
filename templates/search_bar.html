@@ -47,19 +47,6 @@
         </nav>
     </header>
     <div>
-        <span>
-            {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
-            <span>
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-            </span>
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
         <ul class="list">
             {% for element in page_obj.object_list %}
                 {% if request.user.is_authenticated or request.user.is_staff %}
@@ -76,3 +63,19 @@
         </ul>
     </div>
 </div>
+
+{% if searched %}
+    <h1>YOU searched for {{ searched }}</h1>
+    {% if paper %}
+        {% for p in paper %}
+            <a class="review-card container" href="{% url 'paper details' p.id %}">
+            <p>Topic: {{ p.topic }}</p>
+            <p>Written by: {{ p.created_by }}</p>
+            <p>Description: {{ p.description|show_less }}</p>
+            <br>
+            </a>
+        {% endfor %}
+    {% else %}
+        <h1>SORRY, no papers match your search.</h1>
+    {% endif %}
+{% endif %}
