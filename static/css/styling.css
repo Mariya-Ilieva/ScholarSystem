@@ -78,7 +78,7 @@ form:not(.search){
 
 form:not(.search) label, p {
     background-color: #FFE793;
-    font-size: 35px;
+    font-size: 30px;
     text-align: center;
     margin: 5px;
 }
