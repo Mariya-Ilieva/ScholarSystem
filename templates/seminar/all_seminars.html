@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <ul class="list">
+            {% for s in seminar_list %}
+                <p>{{ s.theme }}</p>
+                <p>{{ s.date }}</p>
+                <p>{{ s.time }}</p>
+                <p>{{ s.link }}</p>
+                {% if user.is_staff %}
+                    <a class="button" href="{% url 'seminar edit' s.id %}">Edit</a>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="div">
+            <p><i>Theme: </i> <strong>{{ object.theme }}</strong></p>
+            <p><i>Date: </i> <strong>{{ object.date }}</strong></p>
+            <p><i>Time: </i> <strong>{{ object.time }}</strong></p>
+            <p><i>Link: </i><strong>{{ object.link }}</strong></p>
+        <div>
+            <a href="{% url 'seminar edit' object.id %}">
+                <button class="button">Edit</button>
+            </a>
+            <a href="{% url 'seminar delete' object.id %}">
+                <button class="button">Delete</button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -20,12 +20,14 @@
             <a href="{% url 'all papers' %}">PAPERS</a>
             {% if user.is_authenticated %}
                 <a href="{% url 'papers user' %}">MY PAPERS</a>
+                <a href="{% url 'all seminars' %}">SEMINARS</a>
             {% endif %}
             <ul>
                 {% if user.is_staff %}
                     <a href="{% url 'topic add' %}">Add Topic</a>
                 {% endif %}
                 {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'seminar create' %}">Add seminar</a></li>
                     <li><a href="{% url 'paper create' %}">Add paper</a></li>
                     <li><a href="{% url 'user details' request.user.pk %}">Profile</a></li>
                     <li><a href="{% url 'user logout' %}">Sign Out</a></li>

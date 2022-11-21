@@ -1,8 +1,9 @@
 from django.urls import path, include
-from scholar_system.seminars.views import CreateSeminarView, DetailsSeminarView, EditSeminarView, DeleteSeminarView
-
+from scholar_system.seminars.views import CreateSeminarView, DetailsSeminarView, EditSeminarView, DeleteSeminarView, \
+    AllSeminarsView
 
 urlpatterns = [
+    path('all/', AllSeminarsView.as_view(), name='all seminars'),
     path('create/', CreateSeminarView.as_view(), name='seminar create'),
     path('<int:pk>/', include([
         path('details/', DetailsSeminarView.as_view(), name='seminar details'),
