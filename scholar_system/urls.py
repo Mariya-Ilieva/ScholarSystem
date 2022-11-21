@@ -8,7 +8,7 @@ urlpatterns = [
     path('user/', include('scholar_system.accounts.urls')),
     path('', include('scholar_system.main.urls')),
     path('paper/', include('scholar_system.papers.urls')),
-    path('seminars/', include('scholar_system.seminars.urls')),
+    path('seminar/', include('scholar_system.seminars.urls')),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
