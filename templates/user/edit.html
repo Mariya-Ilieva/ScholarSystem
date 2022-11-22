@@ -4,14 +4,10 @@
     <div class="div">
         <form method="POST" action="{% url 'user edit' object.pk %}">
             {% csrf_token %}
-            <label>Username:</label>
-            {{ form.username }}
-            <label>Age:</label>
-            {{ form.age }}
-            <label>First Name:</label>
-            {{ form.first_name }}
-            <label>Last Name:</label>
-            {{ form.last_name }}
+            <label>Username:</label>{{ form.username }}
+            <label>Age:</label>{{ form.age }}
+            <label>First Name:</label>{{ form.first_name }}
+            <label>Last Name:</label>{{ form.last_name }}
             <button class="button">Save</button>
         </form>
     </div>

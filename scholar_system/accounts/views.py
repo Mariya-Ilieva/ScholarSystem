@@ -65,12 +65,8 @@ class DeleteUserView(CustomPermissionMixin, generic.DeleteView):
 class ChangePasswordView(CustomPermissionMixin, generic.UpdateView):
     model = UserModel
     form_class = ChangePasswordForm
-    fields = '__all__'
     template_name = 'user/change_password.html'
     success_url = reverse_lazy('user login')
-
-    def get_form_class(self):
-        return self.form_class
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
