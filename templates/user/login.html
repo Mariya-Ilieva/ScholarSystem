@@ -5,8 +5,8 @@
         <form method="POST" action="{% url 'user login' %}">
             {% csrf_token %}
             {{ form }}
-            {{ form.errors }}
             <button class="button">Login</button>
         </form>
     </div>
+    <footer><div>scholar system &#9997;</div></footer>
 {% endblock %}

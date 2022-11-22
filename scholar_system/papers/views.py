@@ -24,7 +24,7 @@ class CreatePaperView(LoginRequiredMixin, generic.CreateView):
     model = Paper
     form_class = CreatePaperForm
     template_name = 'paper/add_paper.html'
-    success_url = reverse_lazy('home page')
+    success_url = reverse_lazy('papers user')
 
     def form_valid(self, form):
         user = Profile.objects.get(pk=self.request.user.id)
@@ -33,16 +33,16 @@ class CreatePaperView(LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
-class DetailsPaperView(LoginRequiredMixin, generic.UpdateView):
+class DetailsPaperView(LoginRequiredMixin, generic.DetailView):
     model = Paper
     form_class = PaperForm
     template_name = 'paper/details_paper.html'
-    success_url = reverse_lazy('home page')
+    success_url = reverse_lazy('papers user')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['is_owner'] = False
-        context['comments'] = Comment.objects.filter(pk=self.object.id)
+        context['comments'] = Comment.objects.filter(paper_id=self.object.id)
         if self.request.user.is_authenticated:
             profile = Profile.objects.get(pk=self.request.user.id)
             context['is_owner'] = context['object'].created_by == profile
@@ -66,7 +66,7 @@ class EditPaperView(LoginRequiredMixin, generic.UpdateView):
 class DeletePaperView(LoginRequiredMixin, generic.DeleteView):
     model = Paper
     template_name = 'paper/delete_paper.html'
-    success_url = reverse_lazy('home page')
+    success_url = reverse_lazy('papers user')
 
     def dispatch(self, request, *args, **kwargs):
         paper = Paper.objects.get(pk=kwargs['pk'])
