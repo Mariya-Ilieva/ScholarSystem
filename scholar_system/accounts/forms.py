@@ -25,6 +25,7 @@ class RegisterUserForm(forms.UserCreationForm):
         )
         user.set_password(self.cleaned_data['password1'])
         user.save()
+
         profile = Profile(
             username=self.cleaned_data['username'],
             age=self.cleaned_data['age'],
