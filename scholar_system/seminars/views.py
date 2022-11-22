@@ -9,7 +9,7 @@ class CreateSeminarView(LoginRequiredMixin, generic.CreateView):
     model = Seminar
     form_class = SeminarForm
     template_name = 'seminar/add_seminar.html'
-    success_url = reverse_lazy('home page')
+    success_url = reverse_lazy('all seminars')
 
 
 class DetailsSeminarView(LoginRequiredMixin, generic.DetailView):
@@ -29,7 +29,7 @@ class EditSeminarView(LoginRequiredMixin, generic.UpdateView):
 class DeleteSeminarView(LoginRequiredMixin, generic.DeleteView):
     model = Seminar
     template_name = 'seminar/delete_seminar.html'
-    success_url = reverse_lazy('home page')
+    success_url = reverse_lazy('all seminars')
 
 
 class AllSeminarsView(generic.ListView):
