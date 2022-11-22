@@ -21,6 +21,7 @@
             <h2>Comments:</h2>
             {% for comment in comments %}
                 <div class="comment">
+                <h4>/By {{ comment.commented_by }}/</h4>
                     <p>{{ comment.text }}</p>
                     {% if profile == comment.commented_by %}
                         <a href="{% url 'comment edit' comment.id %}">
@@ -29,7 +30,6 @@
                         <a href="{% url 'comment delete' comment.id %}">
                             <button>Delete Comment</button>
                         </a>
-                        <h4>By {{ comment.commented_by }}</h4>
                     {% endif %}
                 </div>
             {% endfor %}
