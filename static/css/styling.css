@@ -84,7 +84,7 @@ form:not(.search) label, p {
 }
 
 p {
-    color: tomato;
+    color: darkslategray;
 }
 
 form:not(.search) input,

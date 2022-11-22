@@ -8,13 +8,13 @@
                 <p>{{ s.date }}</p>
                 <p>{{ s.time }}</p>
                 <p><a href="{{ s.link }}">{{ s.link }}</a></p>
+                <br>
                 {% if user.is_staff %}
-                    <a class="button" href="{% url 'seminar details' s.id %}">Details</a>
-                    <a class="button" href="{% url 'seminar edit' s.id %}">Edit</a>
-                    <a class="button" href="{% url 'seminar delete' s.id %}">Delete</a>
+                    <button><a href="{% url 'seminar details' s.id %}">Details</a></button>
+                    <button><a href="{% url 'seminar edit' s.id %}">Edit</a></button>
+                    <button><a href="{% url 'seminar delete' s.id %}">Delete</a></button>
                 {% endif %}
             {% endfor %}
-        <br>
         </ul>
     </div>
 {% endblock %}

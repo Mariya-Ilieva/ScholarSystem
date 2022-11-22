@@ -34,6 +34,7 @@
             <ul>
                 {% if user.is_staff %}
                     <a href="{% url 'topic add' %}">Add Topic</a>
+                    <a href="{% url 'seminar create' %}">Add seminar</a>
                 {% endif %}
                 {% if request.user.is_authenticated %}
                     <li><a href="{% url 'paper create' %}">Add paper</a></li>
