@@ -1,5 +1,6 @@
 {% load static %}
 {% load custom_tag %}
+{% load ratings %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,15 +21,14 @@
             <a href="{% url 'all papers' %}">PAPERS</a>
             {% if user.is_authenticated %}
                 <a href="{% url 'papers user' %}">MY PAPERS</a>
-                <a href="{% url 'all seminars' %}">SEMINARS</a>
             {% endif %}
             <ul>
                 {% if user.is_staff %}
                     <a href="{% url 'topic add' %}">Add Topic</a>
                 {% endif %}
                 {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'paper create' %}">Add paper</a></li>
                     <li><a href="{% url 'seminar create' %}">Add seminar</a></li>
+                    <li><a href="{% url 'paper create' %}">Add paper</a></li>
                     <li><a href="{% url 'user details' request.user.pk %}">Profile</a></li>
                     <li><a href="{% url 'user logout' %}">Sign Out</a></li>
                 {% else %}
@@ -38,13 +38,17 @@
             </ul>
         </nav>
     </header>
-    {% block content %}
-    {% endblock %}
-    <footer>
-        <div>
-            scholar system &#9997;
-        </div>
-    </footer>
+
+    <div>
+        <ul class="list">
+            {% for p in topic_papers %}
+                <a class="review-card container" href="{% url 'paper details' p.id %}">
+                    <p>Topic: {{ p.topic }}</p>
+                    <p>Written by: {{ p.created_by }}</p>
+                    <p>Description: {{ p.description|show_less }}</p>
+                    {% ratings p %}
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
-</body>
-</html>

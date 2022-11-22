@@ -8,6 +8,7 @@
                 <p>{{ t.title }}</p>
                 {% if user.is_staff %}
                     <a href="{% url 'topic edit' t.id %}">Edit</a>
+                    <a href="{% url 'all topic papers' t.id%}">Papers</a>
                 {% endif %}
             {% endfor %}
         </ul>

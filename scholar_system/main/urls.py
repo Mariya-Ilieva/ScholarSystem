@@ -1,6 +1,6 @@
 from django.urls import path, include
 from scholar_system.main.views import home_page, unauthorized, AllPapersView, AllTopicsView, \
-    search_bar, add_topic, edit_topic
+    AllTopicPapersView, search_bar, add_topic, edit_topic
 
 urlpatterns = [
     path('', home_page, name='home page'),
@@ -10,6 +10,7 @@ urlpatterns = [
     path('topic/', include([
         path('all/', AllTopicsView.as_view(), name='all topics'),
         path('', add_topic, name='topic add'),
+        path('<int:pk>/papers/', AllTopicPapersView.as_view(), name='all topic papers'),
         path('<int:pk>/edit/', edit_topic, name='topic edit'),
     ])),
 ]

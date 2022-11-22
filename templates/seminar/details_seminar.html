@@ -5,7 +5,7 @@
             <p><i>Theme: </i> <strong>{{ object.theme }}</strong></p>
             <p><i>Date: </i> <strong>{{ object.date }}</strong></p>
             <p><i>Time: </i> <strong>{{ object.time }}</strong></p>
-            <p><i>Link: </i><strong>{{ object.link }}</strong></p>
+            <p><i>Link: </i><strong><a href="{{ object.link }}">{{ object.link }}</a></strong></p>
         <div>
             <a href="{% url 'seminar edit' object.id %}">
                 <button class="button">Edit</button>

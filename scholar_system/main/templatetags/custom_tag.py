@@ -7,3 +7,4 @@ register = template.Library()
 def show_less(text):
     if len(text) > 300:
         return text[:300]
+    return text

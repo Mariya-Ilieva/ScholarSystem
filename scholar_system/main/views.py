@@ -39,6 +39,20 @@ class AllPapersView(generic.ListView):
         return context
 
 
+class AllTopicPapersView(generic.ListView):
+    paginate_by = 5
+    model = Paper
+    template_name = 'main/topic_papers.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        path = self.request.path.split('/')
+        topic_id = path[2].replace('int:', '')
+        topic = Topic.objects.get(pk=topic_id)
+        context['topic_papers'] = Paper.objects.filter(topic=topic)
+        return context
+
+
 class AllTopicsView(generic.ListView):
     model = Topic
     template_name = 'topic/all_topics.html'
