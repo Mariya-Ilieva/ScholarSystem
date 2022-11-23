@@ -1,4 +1,4 @@
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from scholar_system.seminars.forms import SeminarForm
@@ -23,6 +23,10 @@ class EditSeminarView(LoginRequiredMixin, generic.UpdateView):
     form_class = SeminarForm
     template_name = 'seminar/edit_seminar.html'
     success_url = reverse_lazy('all seminars')
+
+    def get_success_url(self):
+        seminar_id = self.object.id
+        return reverse('seminar details', kwargs={'pk': seminar_id})
 
 
 class DeleteSeminarView(LoginRequiredMixin, generic.DeleteView):

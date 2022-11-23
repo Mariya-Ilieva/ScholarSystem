@@ -16,7 +16,7 @@
             {% endif %}
         </span>
         <ul class="list">
-            {% for s in seminar_list %}
+            {% for s in page_obj.object_list %}
                 <p>{{ s.theme }}</p>
                 <p>{{ s.date }}</p>
                 <p>{{ s.time }}</p>

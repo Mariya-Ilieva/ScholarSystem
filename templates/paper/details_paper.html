@@ -2,19 +2,19 @@
 
 {% block content %}
     <div class="div">
-        <h1>{{ object.topic }}</h1>
-        <p>{{ object.description }}</p>
+        <h1>{{ paper.topic }}</h1>
+        <p>{{ paper.description }}</p>
         {% if is_owner %}
             <div>
-                <a href="{% url 'paper edit' object.id %}">
+                <a href="{% url 'paper edit' paper.id %}">
                     <button class="button">Edit paper</button>
                 </a>
-                <a href="{% url 'paper delete' object.id %}">
+                <a href="{% url 'paper delete' paper.id %}">
                     <button class="button">Delete paper</button>
                 </a>
             </div>
         {% endif %}
-        <a href="{% url 'comment add' object.id %}">
+        <a href="{% url 'comment add' paper.id %}">
             <button class="button">Add Comment</button>
         </a>
         {% if comments %}
