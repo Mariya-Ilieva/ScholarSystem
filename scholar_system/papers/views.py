@@ -37,7 +37,6 @@ class DetailsPaperView(LoginRequiredMixin, generic.DetailView):
     model = Paper
     form_class = PaperForm
     template_name = 'paper/details_paper.html'
-    success_url = reverse_lazy('papers user')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -55,6 +54,10 @@ class EditPaperView(LoginRequiredMixin, generic.UpdateView):
     form_class = EditPaperForm
     template_name = 'paper/edit_paper.html'
     success_url = reverse_lazy('papers user')
+
+    def get_success_url(self):
+        paper_id = self.object.id
+        return reverse('paper details', kwargs={'pk': paper_id})
 
     def dispatch(self, request, *args, **kwargs):
         paper = Paper.objects.get(pk=kwargs['pk'])
