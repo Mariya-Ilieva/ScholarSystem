@@ -11,7 +11,6 @@ from scholar_system.papers.utils import is_owner
 class UserPapersView(generic.ListView):
     model = Paper
     template_name = 'paper/my_papers.html'
-    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
