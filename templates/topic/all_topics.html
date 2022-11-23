@@ -9,11 +9,11 @@
                 {% if user.is_staff %}
                     <button><a href="{% url 'all topic papers' t.id%}">Papers</a></button>
                     <button><a href="{% url 'topic edit' t.id %}">Edit</a></button>
-                {% endif %}
-                {% if user.is_authenticated %}
+                {% elif user.is_authenticated %}
                     <button><a href="{% url 'all topic papers' t.id%}">Papers</a></button>
                 {% endif %}
             {% endfor %}
         </ul>
     </div>
+    <footer><div>scholar system &#9997;</div></footer>
 {% endblock %}
