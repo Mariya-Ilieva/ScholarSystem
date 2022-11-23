@@ -101,7 +101,10 @@ class EditCommentView(LoginRequiredMixin, generic.UpdateView):
     model = Comment
     form_class = EditCommentForm
     template_name = 'comment/edit_comment.html'
-    success_url = reverse_lazy('all papers')
+
+    def get_success_url(self):
+        object_id = Paper.objects.get(pk=self.object.paper.id).id
+        return reverse('paper details', kwargs={'pk': object_id})
 
     def dispatch(self, request, *args, **kwargs):
         comment = Comment.objects.get(pk=kwargs['pk'])
@@ -113,7 +116,10 @@ class EditCommentView(LoginRequiredMixin, generic.UpdateView):
 class DeleteCommentView(LoginRequiredMixin, generic.DeleteView):
     model = Comment
     template_name = 'comment/delete_comment.html'
-    success_url = reverse_lazy('all papers')
+
+    def get_success_url(self):
+        object_id = Paper.objects.get(pk=self.object.paper.id).id
+        return reverse('paper details', kwargs={'pk': object_id})
 
     def dispatch(self, request, *args, **kwargs):
         comment = Comment.objects.get(pk=kwargs['pk'])
