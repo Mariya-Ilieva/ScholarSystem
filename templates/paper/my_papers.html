@@ -1,44 +1,9 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load custom_tag %}
 {% load ratings %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Scholar System</title>
-    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static "css/styling.css" %}"/>
-</head>
-<body>
-<div id="box">
-    <header>
-        <nav>
-            <img src="{% static "images/avatar_scholar_256.png" %}" alt="scholar">
-            <a href="{% url 'home page' %}">HOME</a>
-            <a href="{% url 'all topics' %}">TOPICS</a>
-            <a href="{% url 'all papers' %}">PAPERS</a>
-            {% if user.is_authenticated %}
-                <a href="{% url 'papers user' %}">MY PAPERS</a>
-            {% endif %}
-            <ul>
-                {% if user.is_staff %}
-                    <a href="{% url 'topic add' %}">Add Topic</a>
-                    <a href="{% url 'seminar create' %}">Add seminar</a>
-                {% endif %}
-                {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'paper create' %}">Add paper</a></li>
-                    <li><a href="{% url 'user details' request.user.pk %}">Profile</a></li>
-                    <li><a href="{% url 'user logout' %}">Sign Out</a></li>
-                {% else %}
-                    <li><a href="{% url 'user register' %}">Sign Up</a></li>
-                    <li><a href="{% url 'user login' %}">Sign In</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
-
+{% block content %}
     <div>
         <span>
             {% if page_obj.has_previous %}
@@ -65,3 +30,4 @@
         </ul>
     </div>
 </div>
+{% endblock %}
