@@ -16,7 +16,6 @@ class DetailsSeminarView(LoginRequiredMixin, generic.DetailView):
     model = Seminar
     form_class = SeminarForm
     template_name = 'seminar/details_seminar.html'
-    success_url = reverse_lazy('all seminars')
 
 
 class EditSeminarView(LoginRequiredMixin, generic.UpdateView):
