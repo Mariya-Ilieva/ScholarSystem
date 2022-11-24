@@ -70,6 +70,7 @@ nav > img {
 
 form:not(.search){
     background-color: #FFE999;
+    /*height: 500px;*/
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -79,7 +80,7 @@ form:not(.search) label, p {
     background-color: #FFE999;
     font-size: 30px;
     text-align: center;
-    margin: 5px;
+    margin: 6px;
 }
 
 p {
@@ -103,40 +104,41 @@ textarea, select {
     border: none;
     color: white;
     width: 30%;
-    padding: 20px;
+    padding: 12px;
     text-align: center;
     text-decoration: none;
     display: block;
-    font-size: 16px;
+    font-size: 18px;
     margin: 25px auto;
     cursor: pointer;
 }
 
 .div-form {
     width: 85%;
-    padding: 20px;
+    padding: 15px;
+    background-position: right 40% bottom 50%;
     box-sizing: border-box;
     border-radius: 15px;
-    height: 500px;
     font-weight: bold;
     margin-bottom: 70px;
-    margin-top: 20px;
+    margin-top: 10px;
     opacity: 95%;
     flex: content;
-    margin-left: 120px;
+    margin-left: 130px;
     float: left;
+    position: fixed;
 }
 
 .container {
     width: 85%;
-    padding: 20px;
+    padding: 15px;
     background-position: right 35% bottom 45%;
     box-sizing: border-box;
     border-radius: 15px;
     font-weight: bold;
     margin-bottom: 70px;
     margin-top: 20px;
-    background-color: white;
+    background-color: #CFE2FC;
     opacity: 95%;
     flex: content;
     margin-left: 120px;
@@ -148,11 +150,5 @@ textarea, select {
 }
 
 .container:hover {
-    transform: scale(1.05);
-}
-
-.paginator {
-    flex-direction: column;
-    align-items: center;
-    display: -ms-flexbox;
+    transform: scale(1.02);
 }
