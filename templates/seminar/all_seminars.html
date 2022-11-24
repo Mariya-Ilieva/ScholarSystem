@@ -22,6 +22,7 @@
                 <p>{{ s.date }}</p>
                 <p>{{ s.time }}</p>
                 <p><a href="{{ s.link }}">{{ s.link }}</a></p>
+                <p><i>Days remaining: </i><strong>{{ s.days_till }}</strong></p>
                 <br>
                 {% if user.is_staff %}
                     <button><a href="{% url 'seminar details' s.id %}">Details</a></button>
