@@ -1,7 +1,12 @@
+from django.http import FileResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
+from io import BytesIO
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from textwrap import wrap
 from scholar_system.accounts.models import Profile
 from scholar_system.papers.forms import PaperForm, CreatePaperForm, EditPaperForm, CreateCommentForm, EditCommentForm
 from scholar_system.papers.models import Paper, Comment
@@ -128,3 +133,28 @@ class DeleteCommentView(LoginRequiredMixin, generic.DeleteView):
         if not is_owner(self.request, comment.commented_by):
             return redirect('unauthorized')
         return super().dispatch(request, *args, **kwargs)
+
+
+def generate_pdf(request, pk):
+    path = request.path.split('/')
+    paper_id = path[2].replace('int:', '')
+    paper = Paper.objects.get(pk=paper_id)
+    data = [f'{paper.topic}', f'{paper.description}']
+
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer, pagesize=letter, bottomup=0)
+    p.setFont('Helvetica', 18)
+    p.drawCentredString(300, 35, data[0])
+
+    text_obj = p.beginText(55, 80)
+    text_obj.setFont('Helvetica', 14)
+
+    wrapped_text = '\n'.join(wrap(data[1], 80))
+    text_obj.textLines(wrapped_text)
+
+    p.drawText(text_obj)
+    p.showPage()
+    p.save()
+    buffer.seek(0)
+
+    return FileResponse(buffer, as_attachment=False, filename='paper.pdf')
