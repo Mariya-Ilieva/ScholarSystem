@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="div">
+    <div class="div-form">
         <form method="POST" action="{% url 'paper create' %}">
             {% csrf_token %}
             <label>Topic:</label>
@@ -12,5 +12,4 @@
             <button class="button">Create paper</button>
         </form>
     </div>
-    <footer><div>scholar system &#9997;</div></footer>
 {% endblock %}

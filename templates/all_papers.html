@@ -61,9 +61,9 @@
         <ul class="list">
             {% for element in page_obj.object_list %}
                 {% if request.user.is_authenticated or request.user.is_staff %}
-                    <a class="paper-card container" href="{% url 'paper details' element.id %}">
+                    <a class="container" href="{% url 'paper details' element.id %}">
                 {% else %}
-                    <a class="paper-card container" href="{% url 'home page' %}">
+                    <a class="container" href="{% url 'home page' %}">
                 {% endif %}
                     <p>Topic: {{ element.topic }}</p>
                     <p>Written by: {{ element.created_by }}</p>

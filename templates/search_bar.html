@@ -6,7 +6,7 @@
     <h1>YOU searched for {{ searched }}</h1>
     {% if paper %}
         {% for p in paper %}
-            <a class="review-card container" href="{% url 'paper details' p.id %}">
+            <a href="{% url 'paper details' p.id %}">
             <p>Topic: {{ p.topic }}</p>
             <p>Written by: {{ p.created_by }}</p>
             <p>Description: {{ p.description|show_less }}</p>

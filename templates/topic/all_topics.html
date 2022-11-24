@@ -2,18 +2,17 @@
 {% load custom_tag %}
 
 {% block content %}
-    <div>
-        <ul class="list">
-            {% for t in topic_list %}
-                <p>{{ t.title }}</p>
-                {% if user.is_staff %}
-                    <button><a href="{% url 'all topic papers' t.id%}">Papers</a></button>
-                    <button><a href="{% url 'topic edit' t.id %}">Edit</a></button>
-                {% elif user.is_authenticated %}
-                    <button><a href="{% url 'all topic papers' t.id%}">Papers</a></button>
-                {% endif %}
-            {% endfor %}
-        </ul>
+    <div class="list">
+        {% for t in topic_list %}
+            <div class="container">
+            <p>{{ t.title }}</p>
+            {% if user.is_staff %}
+                <button><a href="{% url 'all topic papers' t.id%}">Papers</a></button>
+                <button><a href="{% url 'topic edit' t.id %}">Edit</a></button>
+            {% elif user.is_authenticated %}
+                <button><a href="{% url 'all topic papers' t.id%}">Papers</a></button>
+            {% endif %}
+            </div>
+        {% endfor %}
     </div>
-    <footer><div>scholar system &#9997;</div></footer>
 {% endblock %}

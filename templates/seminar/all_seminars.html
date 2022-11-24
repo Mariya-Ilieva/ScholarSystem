@@ -17,6 +17,7 @@
         </span>
         <ul class="list">
             {% for s in page_obj.object_list %}
+                <div class="container">
                 <p>{{ s.theme }}</p>
                 <p>{{ s.date }}</p>
                 <p>{{ s.time }}</p>
@@ -27,6 +28,7 @@
                     <button><a href="{% url 'seminar edit' s.id %}">Edit</a></button>
                     <button><a href="{% url 'seminar delete' s.id %}">Delete</a></button>
                 {% endif %}
+                </div>
             {% endfor %}
         </ul>
     </div>

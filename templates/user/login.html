@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="div">
+    <div class="div-form">
         <form method="POST" action="{% url 'user login' %}">
             {% csrf_token %}
             {{ form }}
@@ -9,5 +9,4 @@
             <button class="button">Login</button>
         </form>
     </div>
-    <footer><div>scholar system &#9997;</div></footer>
 {% endblock %}

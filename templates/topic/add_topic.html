@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="div">
+    <div class="div-form">
         <form method="POST">
             {% csrf_token %}
             <label>Add Topic</label>
@@ -9,5 +9,4 @@
             <button class="button">Add Topic</button>
         </form>
     </div>
-    <footer><div>scholar system &#9997;</div></footer>
 {% endblock %}

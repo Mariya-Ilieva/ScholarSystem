@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="div">
+    <div class="container">
             {% if object.user.is_staff %}
                 <p><strong>EMPLOYEE</strong></p>
             {% endif %}
@@ -10,17 +10,14 @@
             <p><i>Last Name:</i> <strong>{{ object.last_name }}</strong></p>
             <p><i>Email:</i> <strong>{{ object.user.email }}</strong></p>
             <p><i>Age:</i> <strong>{{ object.age }}</strong></p>
-        <div>
-            <a href="{% url 'user edit' object.user.id %}">
-                <button class="button">Edit</button>
-            </a>
-            <a class="anchor" href="{% url 'user delete' object.user.id %}">
-                <button class="button">Delete</button>
-            </a>
-            <a class="anchor" href="{% url 'change password' object.user.id %}">
-                <button class="button">Change Password</button>
-            </a>
-        </div>
+        <a href="{% url 'user edit' object.user.id %}">
+            <button class="button">Edit</button>
+        </a>
+        <a href="{% url 'user delete' object.user.id %}">
+            <button class="button">Delete</button>
+        </a>
+        <a href="{% url 'change password' object.user.id %}">
+            <button class="button">Change Password</button>
+        </a>
     </div>
-    <footer><div>scholar system &#9997;</div></footer>
 {% endblock %}

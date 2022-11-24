@@ -42,7 +42,7 @@
     <div>
         <ul class="list">
             {% for p in topic_papers %}
-                <a class="paper-card container" href="{% url 'paper details' p.id %}">
+                <a class="container" href="{% url 'paper details' p.id %}">
                     <p>Topic: {{ p.topic }}</p>
                     <p>Written by: {{ p.created_by }}</p>
                     <p>Description: {{ p.description|show_less }}</p>
