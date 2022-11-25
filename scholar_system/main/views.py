@@ -48,6 +48,7 @@ class AllTopicPapersView(generic.ListView):
         path = self.request.path.split('/')
         topic_id = path[2].replace('int:', '')
         topic = Topic.objects.get(pk=topic_id)
+        context['topic'] = topic
         context['topic_papers'] = Paper.objects.filter(topic=topic)
         return context
 

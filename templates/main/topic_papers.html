@@ -41,6 +41,7 @@
 
     <div>
         <ul class="list">
+        {% if topic_papers %}
             {% for p in topic_papers %}
                 <a class="container" href="{% url 'paper details' p.id %}">
                     <p>Topic: {{ p.topic }}</p>
@@ -49,6 +50,9 @@
                     {% ratings p %}
                 </a>
             {% endfor %}
+        {% else %}
+            <a><h1>There are no papers about <u>{{ topic }}</u> yet, but hey you can write the first one.</h1></a>
+        {% endif %}
         </ul>
     </div>
 </div>
