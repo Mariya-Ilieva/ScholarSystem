@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
 {% load custom_tag %}
+{% load ratings %}
 
 {% block content %}
 {% if searched %}
-    <h1>YOU searched for {{ searched }}</h1>
+    <h1>YOU searched for <u>{{ searched }}.</u></h1>
     {% if paper %}
         {% for p in paper %}
-            <a href="{% url 'paper details' p.id %}">
+            <a class="container" href="{% url 'paper details' p.id %}">
             <p>Topic: {{ p.topic }}</p>
             <p>Written by: {{ p.created_by }}</p>
             <p>Description: {{ p.description|show_less }}</p>
+                {% ratings p %}
             <br>
             </a>
         {% endfor %}
     {% else %}
-        <h1>SORRY, no papers match your search.</h1>
+        <h1>SORRY, no papers matched your search.</h1>
     {% endif %}
 {% endif %}
 {% endblock %}

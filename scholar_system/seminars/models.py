@@ -13,4 +13,4 @@ class Seminar(models.Model):
     def days_till(self):
         today = date.today()
         days_till = str(self.date - today).split(',')[0]
-        return days_till
+        return days_till if ':' not in days_till else '0'
