@@ -4,7 +4,14 @@
     <h1>WELCOME to our Community.</h1>
     {% if not user.is_authenticated %}
         <h2>
-            <i>If you want to be able to read the papers you will have to </i><a href="{% url 'user register' %}"> Sign Up</a>
+            <i>If you want to be able to read the papers you will have to </i>
+            <a href="{% url 'user register' %}"> Sign Up</a>
+        </h2>
+    {% else %}
+        <h2>
+            <i>We hope you'll have a great experience here. You can start now with </i>
+            <a href="{% url 'all papers' %}"> Papers</a> or you can add your
+            <a href="{% url 'paper create' %}">own.</a>
         </h2>
     {% endif %}
 {% endblock %}
