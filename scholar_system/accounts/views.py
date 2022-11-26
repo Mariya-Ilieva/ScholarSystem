@@ -43,8 +43,7 @@ class DetailsUserView(CustomPermissionMixin, generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        user = self.object.user
-        profile = Profile.objects.get(pk=user.id)
+        profile = Profile.objects.get(pk=self.object.user.id)
         context['profile'] = profile
         return context
 
@@ -52,8 +51,11 @@ class DetailsUserView(CustomPermissionMixin, generic.DetailView):
 class EditUserView(CustomPermissionMixin, generic.UpdateView):
     model = Profile
     template_name = 'user/edit.html'
-    success_url = reverse_lazy('home page')
     fields = ['username', 'age', 'first_name', 'last_name']
+
+    def get_success_url(self):
+        user_id = self.request.user.pk
+        return reverse_lazy('user details', kwargs={'pk': user_id})
 
 
 class DeleteUserView(CustomPermissionMixin, generic.DeleteView):
