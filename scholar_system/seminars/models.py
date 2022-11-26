@@ -13,4 +13,10 @@ class Seminar(models.Model):
     def days_till(self):
         today = date.today()
         days_till = str(self.date - today).split(',')[0]
-        return days_till if ':' not in days_till else '0'
+        if ':' in days_till:
+            result = '0'
+        elif days_till.startswith('-'):
+            result = 'Event passed'
+        else:
+            result = days_till
+        return result
