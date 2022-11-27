@@ -44,9 +44,9 @@
         {% if topic_papers %}
             {% for p in topic_papers %}
                 <a class="container" href="{% url 'paper details' p.id %}">
-                    <p>Topic: {{ p.topic }}</p>
-                    <p>Written by: {{ p.created_by }} on {{ p.publication_date }}</p>
-                    <p>Description: {{ p.description|show_less }}</p>
+                    <p><i>Topic:</i> {{ p.topic }}</p>
+                    <p><i>Written by:</i> {{ p.created_by }} <i>on</i> {{ p.publication_date }}</p>
+                    <p><i>Description:</i> {{ p.description|show_less }}</p>
                     {% ratings p %}
                 </a>
             {% endfor %}
