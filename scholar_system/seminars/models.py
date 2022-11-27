@@ -16,7 +16,7 @@ class Seminar(models.Model):
         if ':' in days_till:
             result = '0'
         elif days_till.startswith('-'):
-            result = 'Event passed'
+            result = f'Event passed {days_till[1::]} ago'
         else:
             result = days_till
         return result
