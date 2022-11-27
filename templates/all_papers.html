@@ -67,7 +67,7 @@
                     <a class="container" href="{% url 'home page' %}">
                 {% endif %}
                     <p>Topic: {{ element.topic }}</p>
-                    <p>Written by: {{ element.created_by }}</p>
+                    <p>Written by: {{ element.created_by }} on {{ element.publication_date }}</p>
                     <p>Description: {{ element.description|show_less }}</p>
                     {% ratings element %}
                 </a>

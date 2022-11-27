@@ -8,7 +8,7 @@
             {% for p in user_papers %}
                 <a class="container" href="{% url 'paper details' p.id %}">
                     <p>Topic: {{ p.topic }}</p>
-                    <p>Written by: {{ p.created_by }}</p>
+                    <p>Written by: {{ p.created_by }} on {{ p.publication_date }}</p>
                     <p>Description: {{ p.description|show_less }}</p>
                     {% ratings p %}
                 </a>
