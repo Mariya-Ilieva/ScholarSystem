@@ -24,7 +24,7 @@
             <form class="search" method="POST" action="{% url 'search' %}">
                 {% csrf_token %}
                 <label>
-                    <input type="text" placeholder="Search..." name="searched">
+                    <input type="text" placeholder="Search in paper..." name="searched">
                 </label>
                 <button>Search</button>
             </form>
