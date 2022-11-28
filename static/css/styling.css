@@ -99,6 +99,13 @@ textarea, select {
     box-sizing: border-box;
 }
 
+.comment {
+    background-color: #FFE999;
+    font-size: 18px;
+    text-align: initial;
+    margin: 2px;
+}
+
 .button {
     background-color: #71A1F8;
     border: none;
@@ -151,4 +158,11 @@ textarea, select {
 
 .container:hover {
     transform: scale(1.02);
+}
+
+.paginator {
+    color: #71A1F8;
+    font-size: 20px;
+    text-align: initial;
+    margin: 4px;
 }

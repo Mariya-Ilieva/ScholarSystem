@@ -19,6 +19,9 @@ class Paper(models.Model):
     publication_date = models.DateField(auto_now=True, null=False, blank=True, )
     created_by = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-publication_date']
+
 
 class Comment(models.Model):
     text = models.TextField()

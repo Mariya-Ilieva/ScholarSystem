@@ -9,6 +9,9 @@ class Seminar(models.Model):
     time = models.TimeField()
     link = models.URLField(max_length=200)
 
+    class Meta:
+        ordering = ['date']
+
     @property
     def days_till(self):
         today = date.today()
