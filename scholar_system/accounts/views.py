@@ -20,7 +20,7 @@ class RegisterUserView(generic.CreateView):
     model = MasterUser
     form_class = RegisterUserForm
     template_name = 'user/register.html'
-    success_url = reverse_lazy('user login')
+    success_url = reverse_lazy('home page')
 
 
 class LoginUserView(views.LoginView):
