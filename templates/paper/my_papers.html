@@ -5,6 +5,7 @@
 {% block content %}
     <div>
         <ul class="list">
+        {% if user_papers %}
             {% for p in user_papers %}
                 <a class="container" href="{% url 'paper details' p.id %}">
                     <p><i>Topic:</i> {{ p.topic }}</p>
@@ -13,6 +14,9 @@
                     {% ratings p %}
                 </a>
             {% endfor %}
+        {% else %}
+            <h2><i>You can add your</i> <a href="{% url 'paper create' %}">paper</a> <i>now.</i></h2>
+        {% endif %}
         </ul>
     </div>
 {% endblock %}
