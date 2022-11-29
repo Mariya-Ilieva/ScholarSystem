@@ -27,12 +27,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
     'star_ratings',
 
     'scholar_system.accounts',
     'scholar_system.main',
     'scholar_system.papers',
     'scholar_system.seminars',
+    'scholar_system.users_API',
 ]
 
 MIDDLEWARE = [
