@@ -6,9 +6,11 @@
         {% for t in topic_list %}
             <div class="container">
             <p>{{ t.title }}</p>
-            {% if user.is_staff %}
+            {% if user.is_staff and not user.is_superuser %}
                 <button><a href="{% url 'all topic papers' t.id%}">Papers</a></button>
                 <button><a href="{% url 'topic edit' t.id %}">Edit</a></button>
+            {% elif user.is_staff and user.is_superuser %}
+                <button><a href="{% url 'topic delete' t.id %}">Delete</a></button>
             {% elif user.is_authenticated %}
                 <button><a href="{% url 'all topic papers' t.id%}">Papers</a></button>
             {% endif %}

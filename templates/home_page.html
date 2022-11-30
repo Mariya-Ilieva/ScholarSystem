@@ -7,11 +7,13 @@
             <i>If you want to be able to read the papers you will have to </i>
             <a href="{% url 'user register' %}"> Sign Up</a>
         </h2>
-    {% else %}
+    {% elif user.is_authenticated and not user.is_superuser %}
         <h2>
             <i>We hope you'll have a great experience here. You can start now with </i>
             <a href="{% url 'all papers' %}"> Papers</a> or you can add your
             <a href="{% url 'paper create' %}">own.</a>
         </h2>
+    {% elif user.is_authenticated and user.is_superuser %}
+        <i><h1>Hello, SETTING UP time.</h1></i>
     {% endif %}
 {% endblock %}

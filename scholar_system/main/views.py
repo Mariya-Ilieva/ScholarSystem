@@ -101,3 +101,11 @@ def edit_topic(request, pk):
         'form': form,
     }
     return render(request, 'topic/edit_topic.html', context)
+
+
+def delete_topic(request, pk):
+    topic = Topic.objects.get(pk=pk)
+    if request.method == 'POST':
+        topic.delete()
+        return redirect('all topics')
+    return render(request, 'topic/delete_topic.html')

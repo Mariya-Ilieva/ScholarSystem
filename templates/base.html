@@ -16,10 +16,15 @@
     <header>
         <nav>
             <img src="{% static "images/avatar_scholar_256.png" %}" alt="scholar">
-            <a href="{% url 'home page' %}">HOME</a>
-            <a href="{% url 'all topics' %}">TOPICS</a>
-            <a href="{% url 'all papers' %}">PAPERS</a>
-            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
+                <a href="{% url 'users' %}">&#9881; USERS</a>
+                <a href="{% url 'all seminars' %}">SEMINARS</a>
+            {% else %}
+                <a href="{% url 'home page' %}">HOME</a>
+                <a href="{% url 'all topics' %}">TOPICS</a>
+                <a href="{% url 'all papers' %}">PAPERS</a>
+            {% endif %}
+            {% if user.is_authenticated and not user.is_superuser%}
                 <a href="{% url 'papers user' %}">MY PAPERS</a>
                 <a href="{% url 'all seminars' %}">SEMINARS</a>
             {% endif %}
@@ -28,11 +33,13 @@
                     <a href="{% url 'topic add' %}">Add Topic</a>
                     <a href="{% url 'seminar create' %}">Add seminar</a>
                 {% endif %}
-                {% if request.user.is_authenticated %}
+                {% if user.is_authenticated and not user.is_superuser %}
                     <li><a href="{% url 'paper create' %}">Add paper</a></li>
                     <li><a href="{% url 'user details' request.user.pk %}">Profile</a></li>
                     <li><a href="{% url 'user logout' %}">Sign Out</a></li>
-                {% else %}
+                {% elif user.is_authenticated and user.is_superuser %}
+                    <li><a href="{% url 'user logout' %}">Sign Out</a></li>
+                {% elif not user.is_authenticated %}
                     <li><a href="{% url 'user register' %}">Sign Up</a></li>
                     <li><a href="{% url 'user login' %}">Sign In</a></li>
                 {% endif %}
