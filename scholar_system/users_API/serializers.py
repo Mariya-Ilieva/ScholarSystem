@@ -11,4 +11,4 @@ class MasterUserSerializer(serializers.ModelSerializer):
 class DetailMasterUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = MasterUser
-        exclude = ['password', ]
+        exclude = ['password', 'last_login', ]
