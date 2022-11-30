@@ -17,7 +17,7 @@
         <nav>
             <img src="{% static "images/avatar_scholar_256.png" %}" alt="scholar">
             {% if user.is_superuser %}
-                <a href="{% url 'users' %}">&#9881; USERS</a>
+                <a href="{% url 'users' %}">USERS &#9881;</a>
                 <a href="{% url 'all seminars' %}">SEMINARS</a>
             {% else %}
                 <a href="{% url 'home page' %}">HOME</a>
