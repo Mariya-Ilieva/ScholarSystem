@@ -1,11 +1,13 @@
 from django.db import models
 from scholar_system.accounts.models import Profile
+from scholar_system.seminars.validators import validate_theme
 
 
 class Topic(models.Model):
     TOPIC_TITLE_MAX_LENGTH = 25
 
-    title = models.CharField(max_length=TOPIC_TITLE_MAX_LENGTH, unique=True, )
+    title = models.CharField(max_length=TOPIC_TITLE_MAX_LENGTH, unique=True,
+                             validators=[validate_theme, ])
 
     def __str__(self):
         return self.title

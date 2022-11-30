@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser, PermissionsMixin, UserManager
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MinLengthValidator
 from django.db import models
+from scholar_system.accounts.validators import validate_username, validate_name
 
 
 class Director(UserManager):
@@ -12,12 +14,15 @@ class MasterUser(AbstractUser, PermissionsMixin):
     FIRST_NAME_MAX_LENGTH = 15
     LAST_NAME_MAX_LENGTH = 15
 
-    username = models.CharField(max_length=USERNAME_MAX_LENGTH, unique=True)
+    username = models.CharField(max_length=USERNAME_MAX_LENGTH, unique=True,
+                                validators=[MinLengthValidator(4), validate_username, ])
     email = models.EmailField(unique=True)
     date_joined = models.DateField(auto_now_add=True)
-    age = models.PositiveIntegerField()
-    first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH,)
-    last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH,)
+    age = models.PositiveIntegerField(validators=[MinValueValidator(18), ])
+    first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH,
+                                  validators=[validate_name, ])
+    last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH,
+                                 validators=[validate_name, ])
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'age', 'first_name', 'last_name']
@@ -30,10 +35,13 @@ class Profile(models.Model):
     FIRST_NAME_MAX_LENGTH = 15
     LAST_NAME_MAX_LENGTH = 15
 
-    username = models.CharField(max_length=USERNAME_MAX_LENGTH, unique=True, null=False, default=False)
-    first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH, )
-    last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH, )
-    age = models.PositiveIntegerField()
+    username = models.CharField(max_length=USERNAME_MAX_LENGTH, unique=True, null=False, default=False,
+                                validators=[MinLengthValidator(4), validate_username, ])
+    first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH,
+                                  validators=[validate_name, ])
+    last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH,
+                                 validators=[validate_name, ])
+    age = models.PositiveIntegerField(validators=[MinValueValidator(18), ])
     user = models.OneToOneField(MasterUser, primary_key=True, on_delete=models.CASCADE)
 
     def __str__(self):

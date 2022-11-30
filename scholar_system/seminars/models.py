@@ -1,13 +1,16 @@
 from datetime import date
 from django.db import models
-from scholar_system.seminars.validators import validate_future_date
+from scholar_system.seminars.validators import validate_future_date, validate_theme
 
 
 class Seminar(models.Model):
-    theme = models.CharField(max_length=100)
+    THEME_MAX_LENGTH = 100
+    LINK_MAX_LENGTH = 200
+
+    theme = models.CharField(max_length=THEME_MAX_LENGTH, validators=[validate_theme, ])
     date = models.DateField(validators=[validate_future_date, ])
     time = models.TimeField()
-    link = models.URLField(max_length=200)
+    link = models.URLField(max_length=LINK_MAX_LENGTH)
 
     class Meta:
         ordering = ['date']
