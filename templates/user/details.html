@@ -2,21 +2,21 @@
 
 {% block content %}
     <div class="container">
-            {% if object.user.is_staff %}
+            {% if user.is_staff %}
                 <p><strong>EMPLOYEE &#10001;</strong></p>
             {% endif %}
         <br>
-            <p><i>First Name:</i> <strong>{{ object.first_name }}</strong></p>
-            <p><i>Last Name:</i> <strong>{{ object.last_name }}</strong></p>
-            <p><i>Email:</i> <strong>{{ object.user.email }}</strong></p>
-            <p><i>Age:</i> <strong>{{ object.age }}</strong></p>
-        <a href="{% url 'user edit' object.user.id %}">
+            <p><i>First Name:</i> <strong>{{ user.first_name }}</strong></p>
+            <p><i>Last Name:</i> <strong>{{ user.last_name }}</strong></p>
+            <p><i>Email:</i> <strong>{{ user.email }}</strong></p>
+            <p><i>Age:</i> <strong>{{ user.age }}</strong></p>
+        <a href="{% url 'user edit' user.id %}">
             <button class="button">Edit</button>
         </a>
-        <a href="{% url 'user delete' object.user.id %}">
+        <a href="{% url 'user delete' user.id %}">
             <button class="button">Delete</button>
         </a>
-        <a href="{% url 'change password' object.user.id %}">
+        <a href="{% url 'change password' user.id %}">
             <button class="button">Change Password</button>
         </a>
     </div>

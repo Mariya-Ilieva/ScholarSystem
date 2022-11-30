@@ -58,6 +58,15 @@ class EditUserView(CustomPermissionMixin, generic.UpdateView):
     template_name = 'user/edit.html'
     fields = ['username', 'age', 'first_name', 'last_name']
 
+    def form_valid(self, form):
+        user = self.request.user
+        user.username = form.data.get('username')
+        user.age = form.data.get('age')
+        user.first_name = form.data.get('first_name')
+        user.last_name = form.data.get('last_name')
+        user.save()
+        return super().form_valid(form)
+
     def get_success_url(self):
         user_id = self.request.user.pk
         return reverse_lazy('user details', kwargs={'pk': user_id})
