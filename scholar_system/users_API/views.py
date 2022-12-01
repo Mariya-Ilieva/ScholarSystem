@@ -1,3 +1,4 @@
+from rest_framework import filters
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from scholar_system.accounts.models import MasterUser
 from scholar_system.users_API.serializers import MasterUserSerializer, DetailMasterUserSerializer
@@ -36,11 +37,17 @@ from scholar_system.users_API.serializers import MasterUserSerializer, DetailMas
 #         user.delete()
 #         return response.Response(status.HTTP_200_OK)
 
+
 class UserListCreateView(ListCreateAPIView):
     serializer_class = MasterUserSerializer
     queryset = MasterUser.objects.all()
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    ordering_fields = ['id', 'username', ]
+    search_fields = ['email', 'first_name', 'last_name', ]
+    name = 'All users'
 
 
 class UserUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     serializer_class = DetailMasterUserSerializer
     queryset = MasterUser.objects.all()
+    name = 'User details'
