@@ -1,4 +1,4 @@
-from rest_framework import filters
+from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.permissions import IsAdminUser
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from scholar_system.accounts.models import MasterUser
@@ -44,7 +44,7 @@ class UserListCreateView(ListCreateAPIView):
 
     serializer_class = MasterUserSerializer
     queryset = MasterUser.objects.all()
-    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ['id', 'username', ]
     search_fields = ['email', 'first_name', 'last_name', ]
     name = 'All users'
