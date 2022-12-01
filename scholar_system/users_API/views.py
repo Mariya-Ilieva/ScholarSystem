@@ -47,7 +47,7 @@ class UserListCreateView(ListCreateAPIView):
     filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ['id', 'username', ]
     search_fields = ['email', 'first_name', 'last_name', ]
-    name = 'All users'
+    name = 'USERS'
 
 
 class UserUpdateDestroyView(RetrieveUpdateDestroyAPIView):
