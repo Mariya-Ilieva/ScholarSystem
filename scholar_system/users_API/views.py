@@ -1,4 +1,5 @@
 from rest_framework import filters
+from rest_framework.permissions import IsAdminUser
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from scholar_system.accounts.models import MasterUser
 from scholar_system.users_API.serializers import MasterUserSerializer, DetailMasterUserSerializer
@@ -39,6 +40,8 @@ from scholar_system.users_API.serializers import MasterUserSerializer, DetailMas
 
 
 class UserListCreateView(ListCreateAPIView):
+    permission_classes = [IsAdminUser, ]
+
     serializer_class = MasterUserSerializer
     queryset = MasterUser.objects.all()
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]
@@ -48,6 +51,8 @@ class UserListCreateView(ListCreateAPIView):
 
 
 class UserUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminUser, ]
+
     serializer_class = DetailMasterUserSerializer
     queryset = MasterUser.objects.all()
     name = 'User details'
