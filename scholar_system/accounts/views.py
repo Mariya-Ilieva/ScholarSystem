@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import View, CreateView, DetailView, UpdateView, DeleteView
 from scholar_system.accounts.forms import RegisterUserForm, ChangePasswordForm
-from scholar_system.accounts.models import MasterUser, Profile
+from scholar_system.accounts.models import Profile
 
 UserModel = get_user_model()
 
@@ -18,7 +18,6 @@ class CustomPermissionMixin(View):
 
 
 class RegisterUserView(CreateView):
-    model = MasterUser
     form_class = RegisterUserForm
     template_name = 'user/register.html'
     success_url = reverse_lazy('home page')
@@ -74,7 +73,7 @@ class EditUserView(CustomPermissionMixin, UpdateView):
 
 
 class DeleteUserView(CustomPermissionMixin, DeleteView):
-    model = MasterUser
+    model = UserModel
     template_name = 'user/delete.html'
     success_url = reverse_lazy('home page')
 
