@@ -2,14 +2,14 @@ from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views import generic
+from django.views.generic import View, CreateView, DetailView, UpdateView, DeleteView
 from scholar_system.accounts.forms import RegisterUserForm, ChangePasswordForm
 from scholar_system.accounts.models import MasterUser, Profile
 
 UserModel = get_user_model()
 
 
-class CustomPermissionMixin(generic.View):
+class CustomPermissionMixin(View):
     def dispatch(self, request, *args, **kwargs):
         user = UserModel.objects.get(pk=kwargs['pk'])
         if request.user != user:
@@ -17,7 +17,7 @@ class CustomPermissionMixin(generic.View):
         return super().dispatch(request, *args, **kwargs)
 
 
-class RegisterUserView(generic.CreateView):
+class RegisterUserView(CreateView):
     model = MasterUser
     form_class = RegisterUserForm
     template_name = 'user/register.html'
@@ -43,7 +43,7 @@ class LogoutUserView(LogoutView):
     next_page = reverse_lazy('home page')
 
 
-class DetailsUserView(CustomPermissionMixin, generic.DetailView):
+class DetailsUserView(CustomPermissionMixin, DetailView):
     model = Profile
     template_name = 'user/details.html'
 
@@ -54,7 +54,7 @@ class DetailsUserView(CustomPermissionMixin, generic.DetailView):
         return context
 
 
-class EditUserView(CustomPermissionMixin, generic.UpdateView):
+class EditUserView(CustomPermissionMixin, UpdateView):
     model = Profile
     template_name = 'user/edit.html'
     fields = ['username', 'age', 'first_name', 'last_name']
@@ -73,13 +73,13 @@ class EditUserView(CustomPermissionMixin, generic.UpdateView):
         return reverse_lazy('user details', kwargs={'pk': user_id})
 
 
-class DeleteUserView(CustomPermissionMixin, generic.DeleteView):
+class DeleteUserView(CustomPermissionMixin, DeleteView):
     model = MasterUser
     template_name = 'user/delete.html'
     success_url = reverse_lazy('home page')
 
 
-class ChangePasswordView(CustomPermissionMixin, generic.UpdateView):
+class ChangePasswordView(CustomPermissionMixin, UpdateView):
     model = UserModel
     form_class = ChangePasswordForm
     template_name = 'user/change_password.html'
