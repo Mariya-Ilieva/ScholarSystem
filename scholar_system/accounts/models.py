@@ -16,11 +16,16 @@ class MasterUser(AbstractUser, PermissionsMixin):
 
     username = models.CharField(max_length=USERNAME_MAX_LENGTH, unique=True,
                                 validators=[MinLengthValidator(4), validate_username, ])
+
     email = models.EmailField(unique=True)
+
     date_joined = models.DateField(auto_now_add=True)
+
     age = models.PositiveIntegerField(validators=[MinValueValidator(18), ])
+
     first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH,
                                   validators=[validate_name, ])
+
     last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH,
                                  validators=[validate_name, ])
 
@@ -37,11 +42,15 @@ class Profile(models.Model):
 
     username = models.CharField(max_length=USERNAME_MAX_LENGTH, unique=True, null=False, default=False,
                                 validators=[MinLengthValidator(4), validate_username, ])
+
     first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH,
                                   validators=[validate_name, ])
+
     last_name = models.CharField(max_length=LAST_NAME_MAX_LENGTH,
                                  validators=[validate_name, ])
+
     age = models.PositiveIntegerField(validators=[MinValueValidator(18), ])
+
     user = models.OneToOneField(MasterUser, primary_key=True, on_delete=models.CASCADE)
 
     def __str__(self):

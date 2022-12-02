@@ -8,8 +8,11 @@ class Seminar(models.Model):
     LINK_MAX_LENGTH = 200
 
     theme = models.CharField(max_length=THEME_MAX_LENGTH, validators=[validate_theme, ])
+
     date = models.DateField(validators=[validate_future_date, ])
+
     time = models.TimeField()
+
     link = models.URLField(max_length=LINK_MAX_LENGTH)
 
     class Meta:

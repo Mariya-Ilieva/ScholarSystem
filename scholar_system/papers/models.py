@@ -17,8 +17,11 @@ class Paper(models.Model):
     DESCRIPTION_MAX_LENGTH = 3000
 
     description = models.TextField(max_length=DESCRIPTION_MAX_LENGTH)
+
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE,)
+
     publication_date = models.DateField(auto_now=True, null=False, blank=True, )
+
     created_by = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
     class Meta:
@@ -26,7 +29,11 @@ class Paper(models.Model):
 
 
 class Comment(models.Model):
+
     text = models.TextField()
+
     commented_by = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
     paper = models.ForeignKey(Paper, on_delete=models.CASCADE)
+
     publication_datetime = models.DateTimeField(auto_now_add=True, null=False, blank=True, )

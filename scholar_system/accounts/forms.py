@@ -1,10 +1,11 @@
-from django.contrib.auth import forms, get_user_model
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from scholar_system.accounts.models import Profile
 
 UserModel = get_user_model()
 
 
-class RegisterUserForm(forms.UserCreationForm):
+class RegisterUserForm(UserCreationForm):
     class Meta:
         model = UserModel
         fields = ('username', 'email', 'age', 'first_name', 'last_name')
@@ -38,7 +39,7 @@ class RegisterUserForm(forms.UserCreationForm):
         return user
 
 
-class ChangePasswordForm(forms.PasswordChangeForm):
+class ChangePasswordForm(PasswordChangeForm):
     class Meta:
         model = UserModel
         fields = '__all__'

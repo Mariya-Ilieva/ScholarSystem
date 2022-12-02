@@ -1,8 +1,8 @@
-from django import forms
+from django.forms import ModelForm
 from scholar_system.papers.models import Paper, Comment
 
 
-class PaperForm(forms.ModelForm):
+class PaperForm(ModelForm):
     class Meta:
         model = Paper
         fields = ('topic', 'description')
@@ -18,7 +18,7 @@ class EditPaperForm(PaperForm):
         pass
 
 
-class CommentForm(forms.ModelForm):
+class CommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ('text', )
