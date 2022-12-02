@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views import generic
+from django.views.generic import ListView
 from scholar_system.main.forms import TopicForm
 from scholar_system.papers.models import Paper, Topic
 
@@ -28,7 +28,7 @@ def server_error(request, exception=None):
     return render(request, 'main/server_error.html')
 
 
-class AllPapersView(generic.ListView):
+class AllPapersView(ListView):
     model = Paper
     template_name = 'all_papers.html'
     paginate_by = 5
@@ -39,7 +39,7 @@ class AllPapersView(generic.ListView):
         return context
 
 
-class AllTopicPapersView(generic.ListView):
+class AllTopicPapersView(ListView):
     model = Paper
     template_name = 'main/topic_papers.html'
 
@@ -53,7 +53,7 @@ class AllTopicPapersView(generic.ListView):
         return context
 
 
-class AllTopicsView(generic.ListView):
+class AllTopicsView(ListView):
     model = Topic
     template_name = 'topic/all_topics.html'
 

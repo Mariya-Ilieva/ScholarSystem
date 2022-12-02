@@ -1,9 +1,10 @@
-from django.contrib.auth import login, views, get_user_model
+from django.contrib.auth import get_user_model, login
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from scholar_system.accounts.forms import RegisterUserForm, ChangePasswordForm
-from scholar_system.accounts.models import Profile, MasterUser
+from scholar_system.accounts.models import MasterUser, Profile
 
 UserModel = get_user_model()
 
@@ -28,7 +29,7 @@ class RegisterUserView(generic.CreateView):
         return result
 
 
-class LoginUserView(views.LoginView):
+class LoginUserView(LoginView):
     template_name = 'user/login.html'
     success_url = reverse_lazy('home page')
 
@@ -38,7 +39,7 @@ class LoginUserView(views.LoginView):
         return super().success_url
 
 
-class LogoutUserView(views.LogoutView):
+class LogoutUserView(LogoutView):
     next_page = reverse_lazy('home page')
 
 

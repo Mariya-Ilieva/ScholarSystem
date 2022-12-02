@@ -2,7 +2,7 @@ from django.http import FileResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views import generic
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
@@ -13,7 +13,7 @@ from scholar_system.papers.models import Paper, Comment
 from scholar_system.papers.utils import is_owner
 
 
-class UserPapersView(generic.ListView):
+class UserPapersView(ListView):
     model = Paper
     template_name = 'paper/my_papers.html'
 
@@ -24,7 +24,7 @@ class UserPapersView(generic.ListView):
         return context
 
 
-class CreatePaperView(LoginRequiredMixin, generic.CreateView):
+class CreatePaperView(LoginRequiredMixin, CreateView):
     model = Paper
     form_class = CreatePaperForm
     template_name = 'paper/add_paper.html'
@@ -37,7 +37,7 @@ class CreatePaperView(LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
-class DetailsPaperView(LoginRequiredMixin, generic.DetailView):
+class DetailsPaperView(LoginRequiredMixin, DetailView):
     model = Paper
     form_class = PaperForm
     template_name = 'paper/details_paper.html'
@@ -53,7 +53,7 @@ class DetailsPaperView(LoginRequiredMixin, generic.DetailView):
         return context
 
 
-class EditPaperView(LoginRequiredMixin, generic.UpdateView):
+class EditPaperView(LoginRequiredMixin, UpdateView):
     model = Paper
     form_class = EditPaperForm
     template_name = 'paper/edit_paper.html'
@@ -70,7 +70,7 @@ class EditPaperView(LoginRequiredMixin, generic.UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class DeletePaperView(LoginRequiredMixin, generic.DeleteView):
+class DeletePaperView(LoginRequiredMixin, DeleteView):
     model = Paper
     template_name = 'paper/delete_paper.html'
     success_url = reverse_lazy('papers user')
@@ -82,7 +82,7 @@ class DeletePaperView(LoginRequiredMixin, generic.DeleteView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class AddCommentView(LoginRequiredMixin, generic.CreateView):
+class AddCommentView(LoginRequiredMixin, CreateView):
     form_class = CreateCommentForm
     template_name = 'comment/add_comment.html'
     success_url = reverse_lazy('home page')
@@ -104,7 +104,7 @@ class AddCommentView(LoginRequiredMixin, generic.CreateView):
         return redirect(url)
 
 
-class EditCommentView(LoginRequiredMixin, generic.UpdateView):
+class EditCommentView(LoginRequiredMixin, UpdateView):
     model = Comment
     form_class = EditCommentForm
     template_name = 'comment/edit_comment.html'
@@ -120,7 +120,7 @@ class EditCommentView(LoginRequiredMixin, generic.UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class DeleteCommentView(LoginRequiredMixin, generic.DeleteView):
+class DeleteCommentView(LoginRequiredMixin, DeleteView):
     model = Comment
     template_name = 'comment/delete_comment.html'
 
