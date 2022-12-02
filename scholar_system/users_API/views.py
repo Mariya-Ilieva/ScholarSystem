@@ -35,9 +35,10 @@ class UserListView(ListAPIView):
     name = 'USERS'
 
 
-class UserDetailView(RetrieveDestroyAPIView):
+class UserDetailDeleteView(RetrieveDestroyAPIView):
     permission_classes = [IsAdminUser, ]
 
     serializer_class = DetailMasterUserSerializer
     queryset = MasterUser.objects.all()
     name = 'User details'
+    description = 'Removing inactive users'
