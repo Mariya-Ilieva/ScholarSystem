@@ -40,3 +40,6 @@ class Comment(models.Model):
     paper = models.ForeignKey(Paper, on_delete=models.CASCADE)
 
     publication_datetime = models.DateTimeField(auto_now_add=True, null=False, blank=True, )
+
+    def __str__(self):
+        return f'By {self.commented_by}'

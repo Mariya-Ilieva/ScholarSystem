@@ -14,4 +14,4 @@ class RegisterPaper(admin.ModelAdmin):
 
 @admin.register(Comment)
 class RegisterComment(admin.ModelAdmin):
-    list_display = ['commented_by']
+    list_display = ['paper', 'commented_by']
