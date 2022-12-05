@@ -90,7 +90,7 @@ p {
 form:not(.search) input,
 textarea, select {
     padding: 7px;
-    border: 2.6px solid #71A1F8;
+    border: 2px solid #71A1F8;
     border-radius: 5px;
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
     width: 50%;
