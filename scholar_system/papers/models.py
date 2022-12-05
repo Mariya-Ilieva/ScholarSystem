@@ -27,6 +27,9 @@ class Paper(models.Model):
     class Meta:
         ordering = ['-publication_date']
 
+    def __str__(self):
+        return f'{self.topic} -{self.id}-'
+
 
 class Comment(models.Model):
 
