@@ -22,7 +22,7 @@ footer {
     bottom: 0;
     padding: 15px;
     text-align: center;
-    color: #c5c6c7;
+    color: white;
     font-weight: bold;
 }
 
@@ -69,7 +69,7 @@ nav > img {
 }
 
 form:not(.search){
-    background-color: #FFE999;
+    background-color: whitesmoke;
     /*height: 500px;*/
     display: flex;
     flex-wrap: wrap;
@@ -77,7 +77,7 @@ form:not(.search){
 }
 
 form:not(.search) label, p {
-    background-color: #FFE999;
+    background-color: whitesmoke;
     font-size: 30px;
     text-align: center;
     margin: 6px;
@@ -90,7 +90,7 @@ p {
 form:not(.search) input,
 textarea, select {
     padding: 7px;
-    border: 7px solid #71A1F8;
+    border: 2.6px solid #71A1F8;
     border-radius: 5px;
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
     width: 50%;
@@ -100,14 +100,14 @@ textarea, select {
 }
 
 .comment {
-    background-color: #FFE999;
+    background-color: #c5c6c7;
     font-size: 18px;
     text-align: initial;
     margin: 2px;
 }
 
 .button {
-    background-color: #71A1F8;
+    background-color: black;
     border: none;
     color: white;
     width: 30%;
@@ -137,18 +137,17 @@ textarea, select {
 }
 
 .container {
-    width: 85%;
-    padding: 15px;
-    background-position: right 35% bottom 45%;
+    width: 80%;
+    padding: 10px;
+    background-position: right 40% bottom 40%;
     box-sizing: border-box;
-    border-radius: 15px;
     font-weight: bold;
     margin-bottom: 70px;
     margin-top: 20px;
-    background-color: #CFE2FC;
+    background-color: lightgray;
     opacity: 98%;
     flex: content;
-    margin-left: 120px;
+    margin-left: 143px;
     float: left;
 }
 
@@ -157,11 +156,11 @@ textarea, select {
 }
 
 .container:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 
 .paginator {
-    color: #71A1F8;
+    color: rebeccapurple;
     font-size: 20px;
     text-align: initial;
     margin: 4px;
