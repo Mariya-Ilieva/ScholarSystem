@@ -64,48 +64,64 @@ class AllTopicsView(ListView):
 
 
 def search_bar(request):
-    if request.method == 'POST':
-        searched = request.POST['searched']
-        paper = Paper.objects.filter(description__icontains=searched)
-        context = {
-            'searched': searched,
-            'paper': paper,
-        }
-        return render(request, 'search_bar.html', context)
+    user_id = request.user.id
+    if user_id:
+        if request.method == 'POST':
+            searched = request.POST['searched']
+            paper = Paper.objects.filter(description__icontains=searched)
+            context = {
+                'searched': searched,
+                'paper': paper,
+            }
+            return render(request, 'search_bar.html', context)
+        else:
+            return render(request, 'search_bar.html')
     else:
-        return render(request, 'search_bar.html')
+        return redirect(unauthorized)
 
 
 def add_topic(request):
     form = TopicForm()
-    if request.method == 'POST':
-        form = TopicForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('all topics')
-    context = {
-        'form': form,
-    }
-    return render(request, 'topic/add_topic.html', context)
+    user_id = request.user.id
+    if user_id:
+        if request.method == 'POST':
+            form = TopicForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('all topics')
+        context = {
+            'form': form,
+        }
+        return render(request, 'topic/add_topic.html', context)
+    else:
+        return redirect(unauthorized)
 
 
 def edit_topic(request, pk):
     topic = Topic.objects.get(pk=pk)
     form = TopicForm(instance=topic)
-    if request.method == 'POST':
-        form = TopicForm(request.POST, instance=topic)
-        if form.is_valid():
-            form.save()
-            return redirect('all topics')
-    context = {
-        'form': form,
-    }
-    return render(request, 'topic/edit_topic.html', context)
+    user_id = request.user.id
+    if user_id:
+        if request.method == 'POST':
+            form = TopicForm(request.POST, instance=topic)
+            if form.is_valid():
+                form.save()
+                return redirect('all topics')
+        context = {
+            'form': form,
+        }
+        return render(request, 'topic/edit_topic.html', context)
+    else:
+        return redirect(unauthorized)
 
 
 def delete_topic(request, pk):
     topic = Topic.objects.get(pk=pk)
-    if request.method == 'POST':
-        topic.delete()
-        return redirect('all topics')
-    return render(request, 'topic/delete_topic.html')
+    user_id = request.user.id
+    if user_id:
+        if request.method == 'POST':
+            topic.delete()
+            return redirect('all topics')
+        return render(request, 'topic/delete_topic.html')
+    else:
+        return redirect(unauthorized)
