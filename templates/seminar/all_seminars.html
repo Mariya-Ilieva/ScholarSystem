@@ -28,6 +28,8 @@
                     <button><a href="{% url 'seminar details' s.id %}">Details</a></button>
                     <button><a href="{% url 'seminar edit' s.id %}">Edit</a></button>
                     <button><a href="{% url 'seminar delete' s.id %}">Delete</a></button>
+                {% else %}
+                    <button><a href="{% url 'seminar details' s.id %}">Details</a></button>
                 {% endif %}
                 </div>
             {% endfor %}

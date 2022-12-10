@@ -11,6 +11,11 @@ class CreateSeminarView(LoginRequiredMixin, CreateView):
     template_name = 'seminar/add_seminar.html'
     success_url = reverse_lazy('all seminars')
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
+
 
 class DetailsSeminarView(LoginRequiredMixin, DetailView):
     model = Seminar
@@ -24,6 +29,11 @@ class EditSeminarView(LoginRequiredMixin, UpdateView):
     template_name = 'seminar/edit_seminar.html'
     success_url = reverse_lazy('all seminars')
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
+
     def get_success_url(self):
         seminar_id = self.object.id
         return reverse('seminar details', kwargs={'pk': seminar_id})
@@ -33,6 +43,11 @@ class DeleteSeminarView(LoginRequiredMixin, DeleteView):
     model = Seminar
     template_name = 'seminar/delete_seminar.html'
     success_url = reverse_lazy('all seminars')
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
 
 
 class AllSeminarsView(ListView):
