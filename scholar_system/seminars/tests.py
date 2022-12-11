@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from scholar_system.seminars.validators import validate_theme, validate_future_date
 
 
-class ValidateThemeTests(TestCase):
+class ValidateThemeTest(TestCase):
     def test_theme_success(self):
         validate_theme('Testing the tests')
 
@@ -15,7 +15,7 @@ class ValidateThemeTests(TestCase):
         self.assertIsNotNone(ve.exception)
 
 
-class ValidateFutureDateTests(TestCase):
+class ValidateFutureDateTest(TestCase):
     @mock.patch('scholar_system.papers.utils.today')
     def test_validate_future_date_success(self, today_mock):
         today_mock.return_value = date(2022, 10, 12)

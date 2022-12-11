@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model, authenticate
+from django.core.exceptions import ValidationError
 from django.test import TestCase
+from scholar_system.accounts.validators import validate_username, validate_name
 
 
 class SigninTest(TestCase):
@@ -22,3 +24,25 @@ class SigninTest(TestCase):
     def test_wrong_password(self):
         user = authenticate(username='test', password='wrong')
         self.assertFalse(user is not None and user.is_authenticated)
+
+
+class ValidateUsernameTest(TestCase):
+    def test_username_success(self):
+        validate_username('Test_me')
+
+    def test_username_expected_error(self):
+        with self.assertRaises(ValidationError) as ve:
+            validate_username('Test me')
+        self.assertIsNotNone(ve.exception)
+        self.assertEquals(['Please ensure this username contains only letters, numbers, and underscore.'], ve.exception.messages)
+
+
+class ValidateNameTest(TestCase):
+    def test_name_success(self):
+        validate_name('Test')
+
+    def test_username_expected_error(self):
+        with self.assertRaises(ValidationError) as ve:
+            validate_name('Test12')
+        self.assertIsNotNone(ve.exception)
+        self.assertEquals(['Please ensure this name contains only letters.'], ve.exception.messages)
