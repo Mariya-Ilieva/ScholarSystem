@@ -32,13 +32,6 @@ class AllPapersViewTest(TestCase):
 
 
 class AllTopicsViewTest(TestCase):
-    def setUp(self):
-        self.user = Profile.objects.create(username='Test', age=22, first_name='Test', last_name='Testme', user_id=6)
-        self.user.save()
-
-    def tearDown(self):
-        self.user.delete()
-
     def assertCollectionEmpty(self, collection):
         return self.assertEqual(0, len(collection))
 

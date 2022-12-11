@@ -1,7 +1,8 @@
 from unittest import mock
-from datetime import date
+from datetime import date, datetime, timedelta
 from django.test import TestCase
 from django.core.exceptions import ValidationError
+from scholar_system.seminars.models import Seminar
 from scholar_system.seminars.validators import validate_theme, validate_future_date
 
 
@@ -27,3 +28,20 @@ class ValidateFutureDateTest(TestCase):
         with self.assertRaises(ValidationError) as ve:
             validate_future_date(date(2022, 9, 9))
         self.assertEquals(['Please enter a valid date for the seminar.'], ve.exception.messages)
+
+
+class SeminarTest(TestCase):
+    def setUp(self):
+        self.seminar = Seminar(theme='Test test test', date = date.today(), time = datetime.now(), link='https://www.seminar-bg.eu/')
+        self.seminar.save()
+
+    def test_read_seminar(self):
+        self.assertEqual(self.seminar.days_till, '0')
+        self.assertEqual(self.seminar.theme, 'Test test test')
+
+    def test_update_seminar_description(self):
+        self.seminar.theme = 'Updated test test'
+        self.seminar.date = date.today() + timedelta(days=2)
+        self.seminar.save()
+        self.assertEqual(self.seminar.theme, 'Updated test test')
+        self.assertEqual(self.seminar.days_till, '2 days')
