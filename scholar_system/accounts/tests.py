@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model, authenticate
 from django.core.exceptions import ValidationError
 from django.test import TestCase
+from scholar_system.accounts.forms import RegisterUserForm, ChangePasswordForm
 from scholar_system.accounts.validators import validate_username, validate_name
 
 
@@ -43,6 +44,24 @@ class ValidateNameTest(TestCase):
 
     def test_username_expected_error(self):
         with self.assertRaises(ValidationError) as ve:
-            validate_name('Test12')
+            validate_name('test 12')
         self.assertIsNotNone(ve.exception)
-        self.assertEquals(['Please ensure this name contains only letters.'], ve.exception.messages)
+        self.assertEquals(['Please ensure this name contains only letters and starts with a capital one.'], ve.exception.messages)
+
+
+class AccountsFormsTest(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(username='test', password='12test12', email='test@test.com',
+                                                         age=22, first_name='Test', last_name='Testme')
+        self.user.save()
+
+    def tearDown(self):
+        self.user.delete()
+
+    def test_RegisterUserForm_correct(self):
+        form = RegisterUserForm()
+        self.assertEquals(form.__module__, 'scholar_system.accounts.forms')
+
+    def test_ChangePasswordForm_correct(self):
+        form = ChangePasswordForm(self.user)
+        self.assertEquals(form.__module__, 'scholar_system.accounts.forms')
