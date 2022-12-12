@@ -5,13 +5,10 @@
     <div class="container">
         {% if user.is_staff %}
             <p><strong>EMPLOYEE</strong></p>
-            <nav>
-                <img src="{% static "images/scholar_employee.png" %}" alt="scholar">
-            </nav>
         {% endif %}
-            <nav>
-                <img src="{% static "images/scholar_profile.png" %}" alt="scholar">
-            </nav>
+        <nav>
+            <img src="{% static "images/scholar_profile.png" %}" alt="scholar">
+        </nav>
         <br>
             <p><i>First Name:</i> <strong>{{ user.first_name }}</strong></p>
             <p><i>Last Name:</i> <strong>{{ user.last_name }}</strong></p>
