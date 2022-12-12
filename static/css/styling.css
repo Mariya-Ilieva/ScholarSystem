@@ -78,7 +78,7 @@ form:not(.search){
 }
 
 form:not(.search) label, p {
-    background-color: whitesmoke;
+    background-color: white;
     font-size: 30px;
     text-align: center;
     margin: 6px;
@@ -130,7 +130,7 @@ textarea, select {
     font-weight: bold;
     margin-bottom: 70px;
     margin-top: 10px;
-    opacity: 98%;
+    opacity: 100%;
     flex: content;
     margin-left: 130px;
     float: left;
