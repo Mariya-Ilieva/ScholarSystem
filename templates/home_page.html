@@ -2,17 +2,19 @@
 {% load static %}
 
 {% block content %}
-    <h1>WELCOME to our Community.</h1>
+    <h1><p>WELCOME to our Community.</p></h1>
     {% if not user.is_authenticated %}
-        <h2>
+        <h2 align="center">
             <i>If you want to be able to read the papers you will have to </i>
             <a href="{% url 'user register' %}"> Sign Up</a>
         </h2>
     {% elif user.is_authenticated and not user.is_superuser %}
-        <h2>
+        <h2 align="center">
             <i>We hope you'll have a great experience here.</i>
         </h2>
     {% elif user.is_authenticated and user.is_superuser %}
-        <i><h1>Hello, SETTING UP time.</h1></i>
+        <h2 align="center">
+            <i>Hello, SETTING UP time.</i>
+        </h2>
     {% endif %}
 {% endblock %}

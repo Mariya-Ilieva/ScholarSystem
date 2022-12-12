@@ -142,6 +142,7 @@ textarea, select {
     padding: 10px;
     background-position: right 40% bottom 40%;
     box-sizing: border-box;
+    border-radius: 11px;
     font-weight: bold;
     margin-bottom: 70px;
     margin-top: 20px;
