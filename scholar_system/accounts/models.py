@@ -21,7 +21,7 @@ class MasterUser(AbstractUser, PermissionsMixin):
 
     date_joined = models.DateField(auto_now_add=True)
 
-    age = models.PositiveIntegerField(validators=[MinValueValidator(18), ])
+    age = models.PositiveIntegerField(validators=[MinValueValidator(14), ])
 
     first_name = models.CharField(max_length=FIRST_NAME_MAX_LENGTH,
                                   validators=[validate_name, ])
