@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 def validate_username(value):
     value = value.replace('_', '')
     if not value.isalnum():
-        raise ValidationError('Please ensure this username contains only letters, numbers, and underscore.')
+        raise ValidationError('Please ensure this username contains only letters, numbers, and underscores.')
 
 
 def validate_name(value):
