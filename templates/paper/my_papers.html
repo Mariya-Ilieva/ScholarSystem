@@ -15,7 +15,9 @@
                 </a>
             {% endfor %}
         {% else %}
-            <h2><i>You can add your</i> <a href="{% url 'paper create' %}">paper</a> <i>now.</i></h2>
+            <h2 align="center">
+                <p>You can add your <a href="{% url 'paper create' %}">paper</a> here.</p>
+            </h2>
         {% endif %}
         </ul>
     </div>

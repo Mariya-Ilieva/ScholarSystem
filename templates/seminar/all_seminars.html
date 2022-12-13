@@ -32,6 +32,10 @@
                     <button><a href="{% url 'seminar details' s.id %}">Details</a></button>
                 {% endif %}
                 </div>
+            {% empty %}
+                <h1 align="center">
+                    <p>There are no likely seminars for now.</p>
+                </h1>
             {% endfor %}
         </ul>
     </div>

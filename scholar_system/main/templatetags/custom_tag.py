@@ -5,6 +5,6 @@ register = template.Library()
 
 @register.filter('show_less')
 def show_less(text):
-    if len(text) > 300:
-        return text[:300]
+    if len(text) > 255:
+        return text[:255]
     return text

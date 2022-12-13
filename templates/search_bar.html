@@ -4,7 +4,9 @@
 
 {% block content %}
 {% if searched %}
-    <h1>YOU searched for <u>{{ searched }}.</u></h1>
+    <h1 align="center">
+        <p><i>YOU searched for <u>{{ searched }}.</u></i></p>
+    </h1>
     {% if paper %}
         {% for p in paper %}
             <a class="container" href="{% url 'paper details' p.id %}">
@@ -16,9 +18,13 @@
             </a>
         {% endfor %}
     {% else %}
-        <h1>SORRY, no papers matched your search.</h1>
+        <h1 align="center">
+            <p>SORRY, no papers matched your search.</p>
+        </h1>
     {% endif %}
 {% else %}
-    <h1>PLEASE enter at least one symbol to perform a search.</h1>
+    <h1 align="center">
+        <p>PLEASE enter at least one symbol to perform a search.</p>
+    </h1>
 {% endif %}
 {% endblock %}
