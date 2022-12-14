@@ -10,7 +10,7 @@ class RegisterSeminar(admin.ModelAdmin):
     list_filter = ['date', ]
     search_fields = ['theme', 'date', ]
     sortable_by = ['date', ]
-    list_per_page = 10
+    list_per_page = 15
 
     def show_link(self, obj):
         return format_html("<a href='{url}'>{url}</a>", url=obj.link)

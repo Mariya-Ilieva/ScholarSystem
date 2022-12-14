@@ -12,14 +12,14 @@ class RegisterTopic(admin.ModelAdmin):
 
 @admin.register(Paper)
 class RegisterPaper(admin.ModelAdmin):
-    list_display = ['topic', 'less_description', 'created_by', 'publication_date', ]
+    list_display = ['topic', 'short_description', 'created_by', 'publication_date', ]
     list_filter = ['publication_date', 'topic', ]
     search_fields = ['topic', 'created_by', ]
     sortable_by = ['publication_date', ]
     list_select_related = ['topic', 'created_by', ]
-    list_per_page = 10
+    list_per_page = 15
 
-    def less_description(self, obj):
+    def short_description(self, obj):
         return f'{obj.description[:200]}...'
 
 
@@ -30,4 +30,4 @@ class RegisterComment(admin.ModelAdmin):
     search_fields = ['commented_by', ]
     sortable_by = ['publication_datetime', ]
     list_select_related = ['paper', 'commented_by', ]
-    list_per_page = 10
+    list_per_page = 15
