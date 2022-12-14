@@ -10,6 +10,7 @@ class RegisterSeminar(admin.ModelAdmin):
     list_filter = ['date', ]
     search_fields = ['theme', 'date', ]
     sortable_by = ['date', ]
+    list_editable = ['time', ]
     list_per_page = 15
 
     def show_link(self, obj):

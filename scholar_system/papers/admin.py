@@ -13,6 +13,7 @@ class RegisterTopic(admin.ModelAdmin):
 @admin.register(Paper)
 class RegisterPaper(admin.ModelAdmin):
     list_display = ['topic', 'short_description', 'created_by', 'publication_date', ]
+    date_hierarchy = 'publication_date'
     list_filter = ['publication_date', 'topic', ]
     search_fields = ['topic', 'created_by', ]
     sortable_by = ['publication_date', ]
@@ -26,6 +27,7 @@ class RegisterPaper(admin.ModelAdmin):
 @admin.register(Comment)
 class RegisterComment(admin.ModelAdmin):
     list_display = ['paper', 'text', 'commented_by', 'publication_datetime', ]
+    date_hierarchy = 'publication_datetime'
     list_filter = ['paper', ]
     search_fields = ['commented_by', ]
     sortable_by = ['publication_datetime', ]
