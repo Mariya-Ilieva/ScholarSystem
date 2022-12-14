@@ -14,6 +14,9 @@ urlpatterns = [
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+admin.site.site_header = 'SCHOLAR SYSTEM Admin Panel'
+admin.site.index_title = 'Scholar System Administration'
+
 handler400 = 'scholar_system.main.views.bad_request'
 handler403 = 'scholar_system.main.views.permission_denied'
 handler404 = 'scholar_system.main.views.page_not_found'
