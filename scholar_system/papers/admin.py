@@ -2,11 +2,22 @@ from django.contrib import admin
 from scholar_system.papers.models import Topic, Paper, Comment
 
 
+class PaperInline(admin.StackedInline):
+    model = Paper
+    extra = 1
+
+
+class CommentInline(admin.TabularInline):
+    model = Comment
+    extra = 1
+
+
 @admin.register(Topic)
 class RegisterTopic(admin.ModelAdmin):
     list_display = ['title', ]
     search_fields = ['title', ]
     list_filter = ['title', ]
+    inlines = [PaperInline]
     list_per_page = 20
 
 
@@ -18,6 +29,7 @@ class RegisterPaper(admin.ModelAdmin):
     search_fields = ['topic', 'created_by', ]
     sortable_by = ['publication_date', ]
     list_select_related = ['topic', 'created_by', ]
+    inlines = [CommentInline]
     list_per_page = 15
 
     def short_description(self, obj):
