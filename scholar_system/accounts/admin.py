@@ -17,7 +17,7 @@ class RegisterMasterUser(UserAdmin):
     )
 
     add_fieldsets = (
-        (None, {'fields': ('username', 'email', 'password1', 'password2'), }),
+        ('Personal', {'fields': ('username', 'email', 'password1', 'password2'), }),
     )
 
     readonly_fields = ['date_joined', ]
