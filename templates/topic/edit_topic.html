@@ -6,6 +6,7 @@
             {% csrf_token %}
             <label>Edit Topic</label>
             {{ form.title }}
+            {{ form.title.errors }}
             <button class="button">Edit Topic</button>
         </form>
     </div>

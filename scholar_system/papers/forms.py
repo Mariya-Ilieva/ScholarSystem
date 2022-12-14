@@ -5,7 +5,7 @@ from scholar_system.papers.models import Paper, Comment
 class PaperForm(ModelForm):
     class Meta:
         model = Paper
-        fields = ('topic', 'description')
+        fields = ['topic', 'description', ]
 
 
 class CreatePaperForm(PaperForm):
@@ -21,7 +21,7 @@ class EditPaperForm(PaperForm):
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
-        fields = ('text', )
+        fields = ['text', ]
 
 
 class CreateCommentForm(CommentForm):

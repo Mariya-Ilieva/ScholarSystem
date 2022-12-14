@@ -7,6 +7,8 @@
         <h2 align="center">
             <i>If you want to be able to read the papers you will have to </i>
             <a href="{% url 'user register' %}"> Sign Up</a>
+            <i> or even better: </i>
+            <a href="{% url 'user login' %}"> Sign In.</a>
         </h2>
     {% elif user.is_authenticated and not user.is_superuser %}
         <h2 align="center">
