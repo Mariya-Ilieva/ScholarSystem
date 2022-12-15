@@ -88,8 +88,7 @@ p {
     color: #303A4D;
 }
 
-form:not(.search) input,
-textarea, select {
+form:not(.search) input, textarea, select {
     padding: 7px;
     border: 2px solid #71A1F8;
     border-radius: 5px;

@@ -9,5 +9,5 @@ class SeminarForm(ModelForm):
         model = Seminar
         fields = '__all__'
         widgets = {
-            'date': forms.SelectDateWidget()
+            'date': forms.DateInput(attrs={'type': 'date'}),
         }
