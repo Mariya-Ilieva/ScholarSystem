@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+
 from scholar_system.accounts.models import Profile
 
 UserModel = get_user_model()

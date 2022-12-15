@@ -1,4 +1,5 @@
 from django.db import models
+
 from scholar_system.accounts.models import Profile
 from scholar_system.seminars.validators import validate_theme
 

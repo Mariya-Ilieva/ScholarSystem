@@ -1,6 +1,8 @@
 from django.urls import path, include
-from scholar_system.papers.views import UserPapersView, CreatePaperView, DetailsPaperView, EditPaperView, \
-    DeletePaperView, AddCommentView, EditCommentView, DeleteCommentView, generate_pdf
+
+from scholar_system.papers.views import UserPapersView, CreatePaperView, EditPaperView,\
+    DeletePaperView, DetailsPaperView, AddCommentView, EditCommentView, DeleteCommentView,\
+    generate_pdf
 
 urlpatterns = [
     path('my-papers/', UserPapersView.as_view(), name='papers user'),

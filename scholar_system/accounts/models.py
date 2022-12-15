@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser, PermissionsMixin, UserManag
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MinLengthValidator
 from django.db import models
+
 from scholar_system.accounts.validators import validate_username, validate_name
 
 

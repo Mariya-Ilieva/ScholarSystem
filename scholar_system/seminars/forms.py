@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+
 from scholar_system.seminars.models import Seminar
 
 

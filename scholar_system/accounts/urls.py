@@ -1,6 +1,7 @@
 from django.urls import path, include
-from scholar_system.accounts.views import RegisterUserView, LoginUserView, LogoutUserView, DetailsUserView, \
-    EditUserView, DeleteUserView, ChangePasswordView
+
+from scholar_system.accounts.views import RegisterUserView, LoginUserView, LogoutUserView,\
+    DetailsUserView, EditUserView, DeleteUserView, ChangePasswordView
 
 
 urlpatterns = [

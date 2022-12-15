@@ -1,6 +1,8 @@
 from datetime import date
+
 from django.test import TestCase
 from django.urls import reverse
+
 from scholar_system.accounts.models import Profile
 from scholar_system.papers.models import Paper, Topic
 

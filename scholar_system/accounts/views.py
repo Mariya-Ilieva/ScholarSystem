@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import View, CreateView, DetailView, UpdateView, DeleteView
+
 from scholar_system.accounts.forms import RegisterUserForm, ChangePasswordForm
 from scholar_system.accounts.models import Profile
 

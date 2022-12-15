@@ -1,4 +1,5 @@
 from datetime import date
+
 from scholar_system.accounts.models import Profile
 
 

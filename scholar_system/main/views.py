@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
+
 from scholar_system.main.forms import TopicForm
 from scholar_system.papers.models import Paper, Topic
 

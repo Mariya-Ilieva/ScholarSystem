@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model, authenticate
 from django.core.exceptions import ValidationError
 from django.test import TestCase
+
 from scholar_system.accounts.forms import RegisterUserForm, ChangePasswordForm
 from scholar_system.accounts.validators import validate_username, validate_name
 

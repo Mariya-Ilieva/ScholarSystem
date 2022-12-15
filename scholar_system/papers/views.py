@@ -1,12 +1,14 @@
+from io import BytesIO
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from textwrap import wrap
+
 from django.http import FileResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from io import BytesIO
-from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import letter
-from textwrap import wrap
+
 from scholar_system.accounts.models import Profile
 from scholar_system.papers.forms import PaperForm, CreatePaperForm, EditPaperForm, CreateCommentForm, EditCommentForm
 from scholar_system.papers.models import Paper, Comment

@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from scholar_system.papers.models import Topic, Paper, Comment
 
 

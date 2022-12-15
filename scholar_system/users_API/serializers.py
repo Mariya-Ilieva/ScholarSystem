@@ -1,4 +1,5 @@
 from rest_framework.serializers import ModelSerializer
+
 from scholar_system.accounts.models import MasterUser
 
 

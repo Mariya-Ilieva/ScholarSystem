@@ -1,4 +1,5 @@
 from django.urls import path
+
 from scholar_system.users_API.views import UserListView, UserDetailDeleteView
 
 urlpatterns = [

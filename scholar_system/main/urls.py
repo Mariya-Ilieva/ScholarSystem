@@ -1,4 +1,5 @@
 from django.urls import path, include
+
 from scholar_system.main.views import home_page, unauthorized, AllPapersView, AllTopicsView, \
     AllTopicPapersView, search_bar, add_topic, edit_topic, delete_topic
 
