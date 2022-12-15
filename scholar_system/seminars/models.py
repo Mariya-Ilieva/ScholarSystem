@@ -1,5 +1,6 @@
 from datetime import date
 
+from django.core.validators import URLValidator
 from django.db import models
 
 from scholar_system.seminars.validators import validate_theme, validate_future_date
@@ -15,7 +16,7 @@ class Seminar(models.Model):
 
     time = models.TimeField()
 
-    link = models.URLField(max_length=LINK_MAX_LENGTH)
+    link = models.URLField(max_length=LINK_MAX_LENGTH, validators=[URLValidator, ])
 
     class Meta:
         ordering = ['date']
