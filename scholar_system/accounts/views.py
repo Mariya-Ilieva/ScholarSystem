@@ -23,6 +23,11 @@ class RegisterUserView(CreateView):
     template_name = 'user/register.html'
     success_url = reverse_lazy('home page')
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('home page')
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         result = super().form_valid(form)
         login(self.request, self.object)
@@ -32,6 +37,7 @@ class RegisterUserView(CreateView):
 class LoginUserView(LoginView):
     template_name = 'user/login.html'
     success_url = reverse_lazy('home page')
+    redirect_authenticated_user = True
 
     def get_success_url(self):
         if self.success_url:
