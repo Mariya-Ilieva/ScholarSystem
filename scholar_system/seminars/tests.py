@@ -1,8 +1,8 @@
 from datetime import date, datetime, timedelta
 from unittest import mock
 
-from django.test import TestCase
 from django.core.exceptions import ValidationError
+from django.test import TestCase
 
 from scholar_system.seminars.models import Seminar
 from scholar_system.seminars.validators import validate_theme, validate_future_date

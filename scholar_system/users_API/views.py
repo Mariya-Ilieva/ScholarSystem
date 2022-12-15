@@ -1,5 +1,5 @@
-from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.permissions import IsAdminUser
+from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.generics import ListAPIView, RetrieveDestroyAPIView
 
 from scholar_system.accounts.models import MasterUser

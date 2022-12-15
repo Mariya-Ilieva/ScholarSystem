@@ -1,4 +1,5 @@
 from datetime import date
+
 from django.test import TestCase
 
 from scholar_system.accounts.models import Profile

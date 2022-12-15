@@ -1,5 +1,5 @@
-from django.contrib import admin
 from django.utils.html import format_html
+from django.contrib import admin
 
 from scholar_system.seminars.models import Seminar
 
@@ -13,5 +13,6 @@ class RegisterSeminar(admin.ModelAdmin):
     list_editable = ['time', ]
     list_per_page = 15
 
-    def show_link(self, obj):
+    @staticmethod
+    def show_link(obj):
         return format_html("<a href='{url}'>{url}</a>", url=obj.link)

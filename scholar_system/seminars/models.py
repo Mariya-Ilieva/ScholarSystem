@@ -2,7 +2,7 @@ from datetime import date
 
 from django.db import models
 
-from scholar_system.seminars.validators import validate_future_date, validate_theme
+from scholar_system.seminars.validators import validate_theme, validate_future_date
 
 
 class Seminar(models.Model):

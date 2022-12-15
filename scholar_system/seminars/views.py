@@ -1,9 +1,9 @@
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
 
-from scholar_system.seminars.forms import SeminarForm
 from scholar_system.seminars.models import Seminar
+from scholar_system.seminars.forms import SeminarForm
 
 
 class CreateSeminarView(LoginRequiredMixin, CreateView):

@@ -33,7 +33,8 @@ class RegisterPaper(admin.ModelAdmin):
     inlines = [CommentInline]
     list_per_page = 15
 
-    def short_description(self, obj):
+    @staticmethod
+    def short_description(obj):
         return f'{obj.description[:200]}...'
 
 
