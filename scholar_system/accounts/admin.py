@@ -6,6 +6,7 @@ from scholar_system.accounts.models import MasterUser, Profile
 @admin.register(MasterUser)
 class RegisterMasterUser(UserAdmin):
     model = MasterUser
+    actions = ['activate_staff', 'deactivate_staff']
     list_display = ['username', 'email', 'is_staff', 'date_joined', ]
     list_filter = ['is_staff', ]
     ordering = ['-is_superuser', 'username', ]
@@ -22,6 +23,11 @@ class RegisterMasterUser(UserAdmin):
     readonly_fields = ['date_joined', ]
     list_per_page = 15
 
+    def activate_staff(self, request, queryset):
+        queryset.update(is_staff=True)
+
+    def deactivate_staff(self, request, queryset):
+        queryset.update(is_staff=False)
 
 @admin.register(Profile)
 class RegisterProfile(admin.ModelAdmin):
