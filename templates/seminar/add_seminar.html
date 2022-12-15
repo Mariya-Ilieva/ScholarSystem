@@ -5,7 +5,8 @@
         <form method="POST">
             {% csrf_token %}
             {{ form }}
-            <button class="button">Add seminar</button>
+            {{ form.errors }}
+            <button class="button">Save</button>
         </form>
     </div>
 {% endblock %}

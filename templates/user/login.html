@@ -6,7 +6,6 @@
         <form method="POST" action="{% url 'user login' %}">
             {% csrf_token %}
             {{ form }}
-            {{ form.errors }}
             <button class="button">Login</button>
         </form>
         <nav>
