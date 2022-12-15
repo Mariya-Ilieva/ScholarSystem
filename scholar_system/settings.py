@@ -156,7 +156,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         'scholar_system.custom': {
 #             'handlers': ['console'],
 #             'level': 'INFO',
-#             'filters': ['require_debug_true'],
 #         }
 #     }
 # }
