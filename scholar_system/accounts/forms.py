@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 
@@ -10,6 +11,10 @@ class RegisterUserForm(UserCreationForm):
     class Meta:
         model = UserModel
         fields = ['username', 'email', 'age', 'first_name', 'last_name']
+        widgets = {
+            'password1': forms.PasswordInput(),
+            'password2': forms.PasswordInput(),
+        }
 
     def clean_first_name(self):
         return self.cleaned_data['first_name']
