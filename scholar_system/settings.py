@@ -153,9 +153,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #             'handlers': ['console'],
 #             'propagate': True,
 #         },
-#         'scholar_system.custom': {
+#         'scholar_system.logs': {
+#             'level': 'ERROR',
 #             'handlers': ['console'],
-#             'level': 'INFO',
 #         }
 #     }
 # }
